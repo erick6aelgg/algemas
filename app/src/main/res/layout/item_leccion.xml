@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ÍTEM: Lección en la lista
+    Patrones: List Inlay (descripción breve), Infinite List (RecyclerView)
+-->
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="8dp"
+    app:cardCornerRadius="18dp"
+    app:cardElevation="3dp"
+    app:cardBackgroundColor="@color/colorCard">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Barra vertical de dificultad (color semáforo) -->
+        <View
+            android:id="@+id/difficultyBar"
+            android:layout_width="@dimen/difficulty_bar_width"
+            android:layout_height="0dp"
+            android:background="@color/colorEasy"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!-- Número de lección -->
+        <TextView
+            android:id="@+id/tvNumero"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"
+            android:background="@color/colorPrimarySurface"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/difficultyBar" />
+
+        <!-- Nombre de lección -->
+        <TextView
+            android:id="@+id/tvNombre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorOnBackground"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="14dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tvNumero"
+            app:layout_constraintEnd_toStartOf="@id/btnPlay" />
+
+        <!-- LIST INLAY: Descripción breve -->
+        <TextView
+            android:id="@+id/tvDescripcion"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:textColor="@color/colorTextSecondary"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="4dp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            app:layout_constraintTop_toBottomOf="@id/tvNombre"
+            app:layout_constraintStart_toEndOf="@id/tvNumero"
+            app:layout_constraintEnd_toStartOf="@id/btnPlay" />
+
+        <!-- Etiqueta de dificultad -->
+        <TextView
+            android:id="@+id/tvEtiqueta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorEasy"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="14dp"
+            app:layout_constraintTop_toBottomOf="@id/tvDescripcion"
+            app:layout_constraintStart_toEndOf="@id/tvNumero"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <!-- Barra de progreso de dificultad (verde → rojo) -->
+        <ProgressBar
+            android:id="@+id/pbDificultad"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="6dp"
+            android:max="100"
+            android:progress="33"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="14dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tvNumero"
+            app:layout_constraintEnd_toStartOf="@id/btnPlay" />
+
+        <!-- Botón Play (CLEAR ENTRY POINT por lección) -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnPlay"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="16dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            app:icon="@drawable/ic_play"
+            app:iconSize="22dp"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            app:backgroundTint="@color/colorPrimary"
+            app:cornerRadius="24dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

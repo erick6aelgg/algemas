@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Paleta principal (púrpura/índigo) -->
+    <color name="colorPrimary">#5C4DB1</color>
+    <color name="colorPrimaryDark">#3D2E8F</color>
+    <color name="colorPrimaryLight">#7B6FCF</color>
+    <color name="colorPrimarySurface">#EDE8FF</color>
+
+    <!-- Acento coral -->
+    <color name="colorSecondary">#FF6B6B</color>
+    <color name="colorSecondaryVariant">#E05252</color>
+
+    <!-- Fondos -->
+    <color name="colorBackground">#F0EDF8</color>
+    <color name="colorSurface">#FFFFFF</color>
+    <color name="colorCard">#FFFFFF</color>
+
+    <!-- Texto -->
+    <color name="colorOnPrimary">#FFFFFF</color>
+    <color name="colorOnBackground">#1A1A2E</color>
+    <color name="colorTextSecondary">#6B6B8D</color>
+    <color name="colorHint">#9E9CB5</color>
+
+    <!-- Semáforo de dificultad -->
+    <color name="colorEasy">#4CAF50</color>
+    <color name="colorMedium">#FF9800</color>
+    <color name="colorHard">#F44336</color>
+
+    <!-- Gamificación -->
+    <color name="colorGold">#FFD700</color>
+    <color name="colorSuccess">#4CAF50</color>
+    <color name="colorSuccessLight">#C8E6C9</color>
+
+    <!-- Drag & Drop -->
+    <color name="colorDropZone">#E0DBFF</color>
+    <color name="colorDropZoneActive">#BBAAFF</color>
+    <color name="colorDropZoneFilled">#C5F0C5</color>
+
+    <!-- Superposición / overlay -->
+    <color name="colorOverlay">#99000000</color>
+</resources>
