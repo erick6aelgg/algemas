@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Márgenes globales -->
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_medium">16dp</dimen>
+    <dimen name="margin_large">24dp</dimen>
+    <dimen name="margin_xlarge">32dp</dimen>
+
+    <!-- Padding de pantalla -->
+    <dimen name="screen_padding">20dp</dimen>
+
+    <!-- Bordes redondeados -->
+    <dimen name="corner_small">8dp</dimen>
+    <dimen name="corner_medium">16dp</dimen>
+    <dimen name="corner_large">24dp</dimen>
+    <dimen name="corner_circle">50dp</dimen>
+
+    <!-- Elevación -->
+    <dimen name="elevation_card">4dp</dimen>
+    <dimen name="elevation_modal">16dp</dimen>
+
+    <!-- Tamaños de texto -->
+    <dimen name="text_title">28sp</dimen>
+    <dimen name="text_headline">22sp</dimen>
+    <dimen name="text_body">16sp</dimen>
+    <dimen name="text_caption">13sp</dimen>
+    <dimen name="text_equation">26sp</dimen>
+    <dimen name="text_paso">22sp</dimen>
+
+    <!-- Token board -->
+    <dimen name="token_size">56dp</dimen>
+    <dimen name="token_text">24sp</dimen>
+    <dimen name="drop_zone_min_width">52dp</dimen>
+    <dimen name="drop_zone_min_height">44dp</dimen>
+
+    <!-- Progress dots -->
+    <dimen name="dot_size">32dp</dimen>
+
+    <!-- Barra de dificultad en item lección -->
+    <dimen name="difficulty_bar_width">6dp</dimen>
+
+    <!-- Logo en menú principal -->
+    <dimen name="logo_size">140dp</dimen>
+
+    <!-- Círculo de éxito en resultados -->
+    <dimen name="success_circle_size">120dp</dimen>
+</resources>

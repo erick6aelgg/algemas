@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Fondo de EditText para ingresar números -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="#E0DBFF" />
+    <stroke android:width="2dp" android:color="#5C4DB1" />
+    <corners android:radius="8dp" />
+</shape>

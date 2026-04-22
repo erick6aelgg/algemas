@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App -->
+    <string name="app_name">Álge+</string>
+    <string name="version">v1.0.0</string>
+
+    <!-- Menú Principal -->
+    <string name="hint_username">Nombre de usuario</string>
+    <string name="btn_repaso">📚  Modo Repaso</string>
+    <string name="btn_competencia">⚔️  Competencia  (próximamente)</string>
+    <string name="tagline">Aprende álgebra de forma divertida</string>
+
+    <!-- Lista de Lecciones -->
+    <string name="titulo_lecciones">Elige tu lección</string>
+    <string name="saludo_usuario">¡Hola, %1$s!</string>
+    <string name="btn_play">▶</string>
+
+    <!-- Ejercicio -->
+    <string name="puntos_formato">⭐ %1$d pts</string>
+    <string name="btn_verificar">Verificar ✓</string>
+    <string name="btn_pista">💡 Pista</string>
+    <string name="btn_cerrar_tip">Entendido</string>
+    <string name="btn_avanzar">Siguiente →</string>
+
+    <!-- Mensajes de ejercicio -->
+    <string name="mensaje_inicio_leccion">+5 puntos por la iniciativa de aprender 🌟</string>
+    <string name="respuesta_incorrecta">Revisa tu respuesta e inténtalo de nuevo.</string>
+    <string name="felicitacion_ejercicio">¡Muy bien! Respuesta correcta 🎉</string>
+    <string name="felicitacion_ultima">¡Completaste todos los ejercicios! 🏆</string>
+    <string name="puntos_ganados">+%1$d puntos</string>
+
+    <!-- Tip -->
+    <string name="titulo_tip">💡 Pista</string>
+    <string name="aviso_pista">Se descuenta 1 punto por usar una pista.</string>
+
+    <!-- Resultados -->
+    <string name="modo_repaso">Modo Repaso</string>
+    <string name="titulo_resultados">¡Lección completada!</string>
+    <string name="label_puntos_obtenidos">Puntos obtenidos</string>
+    <string name="btn_volver_lecciones">← Volver a lecciones</string>
+    <string name="btn_jugar_nuevo">🔄  Jugar de nuevo</string>
+
+    <!-- Mensajes de resultado según puntaje -->
+    <string name="resultado_excelente">¡Excelente trabajo! Eres un as del álgebra. 🌟</string>
+    <string name="resultado_bien">¡Muy bien! Sigue practicando. 👏</string>
+    <string name="resultado_regular">Buen intento. Repasa los pasos y vuelve a intentarlo.</string>
+    <string name="resultado_practica">¡La práctica hace al maestro! Vuelve a intentarlo.</string>
+
+    <!-- Accesibilidad -->
+    <string name="desc_logo">Icono de Álge+</string>
+    <string name="desc_back">Regresar</string>
+    <string name="desc_star">Estrella de puntos</string>
+</resources>
