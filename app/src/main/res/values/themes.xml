@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.AlgePlus" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryDark</item>
+        <item name="colorOnPrimary">@color/colorOnPrimary</item>
+        <item name="colorSecondary">@color/colorSecondary</item>
+        <item name="colorOnSecondary">@color/colorOnPrimary</item>
+        <item name="android:colorBackground">@color/colorBackground</item>
+        <item name="colorSurface">@color/colorSurface</item>
+        <item name="android:windowBackground">@color/colorBackground</item>
+
+        <!-- Tipografía -->
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textColorPrimary">@color/colorOnBackground</item>
+        <item name="android:textColorSecondary">@color/colorTextSecondary</item>
+
+        <!-- Transición de actividades suave -->
+        <item name="android:windowActivityTransitions">true</item>
+    </style>
+
+    <!-- Toolbar personalizada -->
+    <style name="AlgePlus.Toolbar" parent="Widget.MaterialComponents.Toolbar">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="titleTextColor">@color/colorOnPrimary</item>
+        <item name="navigationIconTint">@color/colorOnPrimary</item>
+    </style>
+
+    <!-- Botón primario grande -->
+    <style name="AlgePlus.Button.Primary" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/colorPrimary</item>
+        <item name="android:textColor">@color/colorOnPrimary</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:letterSpacing">0.04</item>
+        <item name="cornerRadius">16dp</item>
+        <item name="android:paddingTop">14dp</item>
+        <item name="android:paddingBottom">14dp</item>
+    </style>
+
+    <!-- Botón secundario (outline) -->
+    <style name="AlgePlus.Button.Secondary" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="strokeColor">@color/colorPrimary</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">16sp</item>
+        <item name="cornerRadius">16dp</item>
+        <item name="android:paddingTop">14dp</item>
+        <item name="android:paddingBottom">14dp</item>
+    </style>
+
+    <!-- Botón deshabilitado -->
+    <style name="AlgePlus.Button.Disabled" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/colorHint</item>
+        <item name="android:textColor">@color/colorOnPrimary</item>
+        <item name="android:textSize">16sp</item>
+        <item name="cornerRadius">16dp</item>
+    </style>
+
+    <!-- Card de ejercicio -->
+    <style name="AlgePlus.Card" parent="Widget.MaterialComponents.CardView">
+        <item name="cardElevation">4dp</item>
+        <item name="cardCornerRadius">20dp</item>
+        <item name="cardBackgroundColor">@color/colorSurface</item>
+    </style>
+
+    <!-- Card de modal (tip / felicitación) -->
+    <style name="AlgePlus.Card.Modal" parent="AlgePlus.Card">
+        <item name="cardElevation">16dp</item>
+        <item name="cardCornerRadius">24dp</item>
+    </style>
+
+    <!-- TextAppearance de ecuación -->
+    <style name="AlgePlus.Text.Equation" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:textSize">26sp</item>
+    </style>
+
+    <!-- TextAppearance de paso -->
+    <style name="AlgePlus.Text.Paso" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textColor">@color/colorOnBackground</item>
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+
+</resources>
