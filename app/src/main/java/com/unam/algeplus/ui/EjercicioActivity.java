@@ -75,14 +75,14 @@ public class EjercicioActivity extends AppCompatActivity {
 
     private boolean primeraVez = true; // para mostrar el mensaje de +5 puntos al entrar
 
-    // ── Colores de diseño ────────────────────────────────────────────────────
-    private static final String COLOR_PRIMARY     = "#5C4DB1";
-    private static final String COLOR_SURFACE      = "#E8E1FF";
-    private static final String COLOR_TEXT         = "#1A1A2E";
+    // ── Colores de diseño (paleta verde/azul) ────────────────────────────────
+    private static final String COLOR_PRIMARY     = "#2E8B2E";
+    private static final String COLOR_SURFACE      = "#D6EFD6";
+    private static final String COLOR_TEXT         = "#1A1A1A";
     private static final String COLOR_HINT         = "#9E9CB5";
     private static final String COLOR_SUCCESS      = "#4CAF50";
-    private static final String COLOR_DROP_IDLE    = "#E0DBFF";
-    private static final String COLOR_DROP_ACTIVE  = "#BBAAFF";
+    private static final String COLOR_DROP_IDLE    = "#C8E6FF";
+    private static final String COLOR_DROP_ACTIVE  = "#90CAF9";
     private static final String COLOR_DROP_FILLED  = "#C5F0C5";
 
     @Override

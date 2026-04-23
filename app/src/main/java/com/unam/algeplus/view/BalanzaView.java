@@ -44,26 +44,26 @@ public class BalanzaView extends View {
     }
 
     private void init() {
-        beamPaint.setColor(Color.parseColor("#5C4DB1"));
+        beamPaint.setColor(Color.parseColor("#2E8B2E"));
         beamPaint.setStrokeWidth(14f);
         beamPaint.setStyle(Paint.Style.STROKE);
         beamPaint.setStrokeCap(Paint.Cap.ROUND);
 
-        panFillPaint.setColor(Color.parseColor("#EDE8FF"));
+        panFillPaint.setColor(Color.parseColor("#D6EFD6"));
         panFillPaint.setStyle(Paint.Style.FILL);
 
-        panBorderPaint.setColor(Color.parseColor("#5C4DB1"));
+        panBorderPaint.setColor(Color.parseColor("#2E8B2E"));
         panBorderPaint.setStyle(Paint.Style.STROKE);
         panBorderPaint.setStrokeWidth(3f);
 
-        fulcrumPaint.setColor(Color.parseColor("#3D2E8F"));
+        fulcrumPaint.setColor(Color.parseColor("#1B6B1B"));
         fulcrumPaint.setStyle(Paint.Style.FILL);
 
-        textPaint.setColor(Color.parseColor("#1A1A2E"));
+        textPaint.setColor(Color.parseColor("#1A1A1A"));
         textPaint.setTextAlign(Paint.Align.CENTER);
         textPaint.setFakeBoldText(true);
 
-        chainPaint.setColor(Color.parseColor("#9E96D8"));
+        chainPaint.setColor(Color.parseColor("#58C93F"));
         chainPaint.setStrokeWidth(4f);
         chainPaint.setStyle(Paint.Style.STROKE);
         chainPaint.setStrokeCap(Paint.Cap.ROUND);
