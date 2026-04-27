@@ -25,7 +25,7 @@
     <!-- Mensajes de ejercicio -->
     <string name="mensaje_inicio_leccion">+5 puntos por la iniciativa de aprender 🌟</string>
     <string name="respuesta_incorrecta">Revisa tu respuesta e inténtalo de nuevo.</string>
-    <string name="felicitacion_ejercicio">¡Muy bien! Respuesta correcta 🎉</string>
+    <string name="felicitacion_ejercicio">¡Muy bien!\n Respuesta correcta 🎉</string>
     <string name="felicitacion_ultima">¡Completaste todos los ejercicios! 🏆</string>
     <string name="puntos_ganados">+%1$d puntos</string>
 
@@ -41,10 +41,10 @@
     <string name="btn_jugar_nuevo">🔄  Jugar de nuevo</string>
 
     <!-- Mensajes de resultado según puntaje -->
-    <string name="resultado_excelente">¡Excelente trabajo! Eres un as del álgebra. 🌟</string>
-    <string name="resultado_bien">¡Muy bien! Sigue practicando. 👏</string>
-    <string name="resultado_regular">Buen intento. Repasa los pasos y vuelve a intentarlo.</string>
-    <string name="resultado_practica">¡La práctica hace al maestro! Vuelve a intentarlo.</string>
+    <string name="resultado_excelente">¡Excelente trabajo! \nEres un as del álgebra. 🌟</string>
+    <string name="resultado_bien">¡Muy bien! \nSigue practicando. 👏</string>
+    <string name="resultado_regular">Buen intento. \nRepasa los pasos y vuelve a intentarlo.</string>
+    <string name="resultado_practica">¡La práctica hace al maestro! \nVuelve a intentarlo.</string>
 
     <!-- Accesibilidad -->
     <string name="desc_logo">Icono de Álge+</string>

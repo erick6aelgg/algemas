@@ -136,22 +136,22 @@
             android:paddingTop="4dp"
             android:paddingBottom="8dp">
 
+            <!-- PROMINENT DONE BUTTON -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnPista"
                 style="@style/AlgePlus.Button.Secondary"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="60dp"
+                android:layout_marginEnd="8dp"
                 android:layout_weight="1"
                 android:text="@string/btn_pista"
-                android:textSize="15sp"
-                android:layout_marginEnd="8dp" />
+                android:textSize="15sp" />
 
-            <!-- PROMINENT DONE BUTTON -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnVerificar"
                 style="@style/AlgePlus.Button.Primary"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="60dp"
                 android:layout_weight="2"
                 android:text="@string/btn_verificar"
                 android:textSize="16sp" />
@@ -261,7 +261,7 @@
                 android:id="@+id/btnCerrarTip"
                 style="@style/AlgePlus.Button.Primary"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_height="60dp"
                 android:text="@string/btn_cerrar_tip" />
 
         </LinearLayout>
@@ -322,7 +322,7 @@
                 android:id="@+id/btnAvanzar"
                 style="@style/AlgePlus.Button.Primary"
                 android:layout_width="match_parent"
-                android:layout_height="52dp"
+                android:layout_height="60dp"
                 android:text="@string/btn_avanzar"
                 android:textSize="16sp" />
 

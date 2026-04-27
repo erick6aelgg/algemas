@@ -43,5 +43,8 @@
     <dimen name="logo_size">140dp</dimen>
 
     <!-- Círculo de éxito en resultados -->
-    <dimen name="success_circle_size">120dp</dimen>
+    <dimen name="success_circle_size">100dp</dimen>
+
+
+
 </resources>
