@@ -13,6 +13,7 @@
     <!-- Lista de Lecciones -->
     <string name="titulo_lecciones">Elige tu lección</string>
     <string name="saludo_usuario">¡Hola, %1$s!</string>
+    <string name="descripcion_lecciones">Elige la lección que quieres practicar:</string>
     <string name="btn_play">▶</string>
 
     <!-- Ejercicio -->
@@ -21,6 +22,9 @@
     <string name="btn_pista">Pista</string>
     <string name="btn_cerrar_tip">Entendido</string>
     <string name="btn_avanzar">Siguiente →</string>
+    <string name="cero_puntos">0 pts</string>
+    <string name="arrastrar">Arrastra:</string>
+    <string name="pista">Pista</string>
 
     <!-- Mensajes de ejercicio -->
     <string name="mensaje_inicio_leccion">+5 puntos por la iniciativa de aprender</string>
@@ -39,6 +43,7 @@
     <string name="label_puntos_obtenidos">Puntos obtenidos</string>
     <string name="btn_volver_lecciones">← Volver a lecciones</string>
     <string name="btn_jugar_nuevo">Jugar de nuevo</string>
+    <string name="completado">¡Completado!</string>
 
     <!-- Mensajes de resultado según puntaje -->
     <string name="resultado_excelente">¡Excelente trabajo! \nEres un as del álgebra.</string>

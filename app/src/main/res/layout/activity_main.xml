@@ -29,11 +29,11 @@
         android:layout_marginEnd="28dp"
         android:layout_marginTop="20dp"
         android:hint="@string/hint_username"
-        app:boxBackgroundColor="#33FFFFFF"
-        app:boxStrokeColor="#FFFFFF"
-        app:hintTextColor="#FFFFFF"
+        app:boxBackgroundColor="@color/colorOnPrimary"
+        app:boxStrokeColor="@color/colorOnPrimary"
+        app:hintTextColor="@color/colorOnPrimary"
         app:startIconDrawable="@android:drawable/ic_menu_myplaces"
-        app:startIconTint="#FFFFFF"
+        app:startIconTint="@color/colorOnPrimary"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:inputType="textPersonName|textCapWords"
             android:maxLines="1"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/colorOnPrimary"
             android:imeOptions="actionDone" />
 
     </com.google.android.material.textfield.TextInputLayout>

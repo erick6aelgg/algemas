@@ -42,7 +42,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Elige la lección que quieres practicar:"
+            android:text="@string/descripcion_lecciones"
             android:textSize="14sp"
             android:textColor="@color/colorTextSecondary"
             android:layout_marginTop="4dp" />

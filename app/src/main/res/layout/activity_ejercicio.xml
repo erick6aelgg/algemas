@@ -37,7 +37,7 @@
             android:src="@drawable/ic_back_arrow"
             android:contentDescription="@string/desc_back"
             android:background="@android:color/transparent"
-            android:tint="#FFFFFF" />
+            app:tint="@color/colorOnPrimary" />
 
         <TextView
             android:id="@+id/tvUsername"
@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textSize="15sp"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/colorOnPrimary"
             android:textStyle="bold"
             android:layout_marginStart="8dp"
             android:maxLines="1"
@@ -70,10 +70,10 @@
                 android:id="@+id/tvScore"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0 pts"
+                android:text="@string/cero_puntos"
                 android:textSize="14sp"
                 android:textStyle="bold"
-                android:textColor="#FFD700"
+                android:textColor="@color/colorGold"
                 android:layout_marginStart="4dp" />
 
         </LinearLayout>
@@ -171,9 +171,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Arrastra:"
+                android:text="@string/arrastrar"
                 android:textSize="13sp"
-                android:textColor="@color/colorTextSecondary"
+                android:textColor="@color/colorOnPrimary"
                 android:layout_marginEnd="12dp" />
 
             <!-- Los tokens se agregan programáticamente en EjercicioActivity -->
@@ -289,14 +289,6 @@
             android:orientation="vertical"
             android:gravity="center"
             android:padding="28dp">
-
-            <!-- Emoji de celebración grande -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="🎉"
-                android:textSize="52sp"
-                android:layout_marginBottom="8dp" />
 
             <TextView
                 android:id="@+id/tvFelicitacionMsg"
