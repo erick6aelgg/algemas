@@ -35,7 +35,7 @@
             android:id="@+id/tvGreeting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="22sp"
+            android:textSize="@dimen/text_headline"
             android:textStyle="bold"
             android:textColor="@color/colorOnBackground" />
 
@@ -43,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/descripcion_lecciones"
-            android:textSize="14sp"
+            android:textSize="@dimen/text_caption"
             android:textColor="@color/colorTextSecondary"
             android:layout_marginTop="4dp" />
 

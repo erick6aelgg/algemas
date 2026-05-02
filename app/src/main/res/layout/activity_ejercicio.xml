@@ -44,7 +44,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textSize="15sp"
+            android:textSize="@dimen/text_headline"
             android:textColor="@color/colorOnPrimary"
             android:textStyle="bold"
             android:layout_marginStart="8dp"
@@ -71,7 +71,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/cero_puntos"
-                android:textSize="14sp"
+                android:textSize="@dimen/text_caption"
                 android:textStyle="bold"
                 android:textColor="@color/colorGold"
                 android:layout_marginStart="4dp" />
@@ -145,7 +145,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_weight="1"
                 android:text="@string/btn_pista"
-                android:textSize="15sp" />
+                android:textSize="@dimen/text_body" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnVerificar"
@@ -154,7 +154,7 @@
                 android:layout_height="60dp"
                 android:layout_weight="2"
                 android:text="@string/btn_verificar"
-                android:textSize="16sp" />
+                android:textSize="@dimen/text_body" />
 
         </LinearLayout>
 
@@ -172,7 +172,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/arrastrar"
-                android:textSize="13sp"
+                android:textSize="@dimen/text_caption"
                 android:textColor="@color/colorOnPrimary"
                 android:layout_marginEnd="12dp" />
 
@@ -234,7 +234,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/titulo_tip"
-                android:textSize="18sp"
+                android:textSize="@dimen/text_body"
                 android:textStyle="bold"
                 android:textColor="@color/colorPrimary"
                 android:layout_marginBottom="8dp" />
@@ -243,7 +243,7 @@
                 android:id="@+id/tvTipMsg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
+                android:textSize="@dimen/text_body"
                 android:textColor="@color/colorOnBackground"
                 android:gravity="center"
                 android:lineSpacingMultiplier="1.4"
@@ -253,7 +253,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/aviso_pista"
-                android:textSize="12sp"
+                android:textSize="@dimen/text_caption"
                 android:textColor="@color/colorSecondary"
                 android:layout_marginBottom="20dp" />
 
@@ -294,7 +294,7 @@
                 android:id="@+id/tvFelicitacionMsg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
+                android:textSize="@dimen/text_body"
                 android:textStyle="bold"
                 android:textColor="@color/colorOnBackground"
                 android:gravity="center"
@@ -305,7 +305,7 @@
                 android:id="@+id/tvPuntosGanados"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="22sp"
+                android:textSize="@dimen/text_headline"
                 android:textStyle="bold"
                 android:textColor="@color/colorGold"
                 android:layout_marginBottom="24dp" />
@@ -316,7 +316,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:text="@string/btn_avanzar"
-                android:textSize="16sp" />
+                android:textSize="@dimen/text_body" />
 
         </LinearLayout>
 
