@@ -25,7 +25,6 @@
     <dimen name="text_body">16sp</dimen>
     <dimen name="text_caption">14sp</dimen>
     <dimen name="text_equation">26sp</dimen>
-    <dimen name="text_paso">22sp</dimen>
 
     <!-- Token board -->
     <dimen name="token_size">56dp</dimen>
@@ -45,6 +44,15 @@
     <!-- Círculo de éxito en resultados -->
     <dimen name="success_circle_size">100dp</dimen>
 
+    <!-- Main -->
+    <dimen name="main_y_translation">-50dp</dimen>
+
+    <!-- Botones en main -->
+    <dimen name="main_btn_width">0dp</dimen>
+    <dimen name="main_btn_height">60dp</dimen>
+    <dimen name="main_btn_margin_start">28dp</dimen>
+    <dimen name="main_btn_margin_end">28dp</dimen>
+    <dimen name="main_btn_margin_top">14dp</dimen>
 
 
 </resources>

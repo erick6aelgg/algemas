@@ -25,15 +25,15 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="@dimen/main_btn_margin_start"
+        android:layout_marginEnd="@dimen/main_btn_margin_start"
+        android:layout_marginTop="@dimen/main_btn_margin_top"
         android:hint="@string/hint_username"
-        app:boxBackgroundColor="@color/colorOnPrimary"
-        app:boxStrokeColor="@color/colorOnPrimary"
-        app:hintTextColor="@color/colorOnPrimary"
+        app:boxBackgroundColor="@color/colorWhiteTranslucent"
+        app:boxStrokeColor="@color/colorBackground"
+        app:hintTextColor="@color/colorBackground"
         app:startIconDrawable="@android:drawable/ic_menu_myplaces"
-        app:startIconTint="@color/colorOnPrimary"
+        app:startIconTint="@color/colorBackground"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:inputType="textPersonName|textCapWords"
             android:maxLines="1"
-            android:textColor="@color/colorOnPrimary"
+            android:textColor="@color/colorBackground"
             android:imeOptions="actionDone" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -60,7 +60,7 @@
         app:layout_constraintTop_toBottomOf="@id/waveTop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:translationY="-60dp" />
+        android:translationY="@dimen/main_y_translation" />
 
     <!-- ── Nombre de la app ──────────────────────────────────────────────── -->
     <TextView
@@ -75,7 +75,7 @@
         app:layout_constraintTop_toBottomOf="@id/ivLogo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:translationY="-50dp" />
+        android:translationY="@dimen/main_y_translation" />
 
     <!-- ── Tagline ───────────────────────────────────────────────────────── -->
     <TextView
@@ -89,7 +89,7 @@
         app:layout_constraintTop_toBottomOf="@id/tvAppName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:translationY="-50dp" />
+        android:translationY="@dimen/main_y_translation" />
 
     <!-- ── Divisor ───────────────────────────────────────────────────────── -->
     <View
@@ -101,7 +101,7 @@
         app:layout_constraintTop_toBottomOf="@id/tvTagline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:translationY="-50dp" />
+        android:translationY="@dimen/main_y_translation" />
 
     <!-- ── CLEAR ENTRY POINT 2: Botón Repaso ────────────────────────────── -->
     <com.google.android.material.button.MaterialButton
@@ -118,7 +118,7 @@
         app:layout_constraintTop_toBottomOf="@id/divider"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:translationY="-50dp" />
+        android:translationY="@dimen/main_y_translation" />
 
     <!-- ── CLEAR ENTRY POINT 3: Botón Competencia (deshabilitado) ───────── -->
     <com.google.android.material.button.MaterialButton
@@ -136,7 +136,7 @@
         app:layout_constraintTop_toBottomOf="@id/btnRepaso"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:translationY="-50dp" />
+        android:translationY="@dimen/main_y_translation" />
 
     <!-- ── Versión ───────────────────────────────────────────────────────── -->
     <TextView

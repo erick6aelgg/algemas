@@ -14,6 +14,7 @@
     <color name="colorBackground">#F0EDF8</color>
     <color name="colorSurface">#FFFFFF</color>
     <color name="colorCard">#FFFFFF</color>
+    <color name="colorWhiteTranslucent">#33FFFFFF</color>
 
     <!-- Texto -->
     <color name="colorOnPrimary">#FFFFFF</color>
