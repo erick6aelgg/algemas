@@ -6,8 +6,8 @@
 
     <!-- Menú Principal -->
     <string name="hint_username">Nombre de usuario</string>
-    <string name="btn_repaso">Modo Repaso</string>
-    <string name="btn_competencia">Competencia  (próximamente)</string>
+    <string name="btn_local">Practicar</string>
+    <string name="btn_conexion">Competencia  (próximamente)</string>
     <string name="tagline">Aprende álgebra de forma divertida</string>
 
     <!-- Lista de Lecciones -->

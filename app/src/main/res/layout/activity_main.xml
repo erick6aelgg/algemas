@@ -103,16 +103,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:translationY="@dimen/main_y_translation" />
 
-    <!-- ── CLEAR ENTRY POINT 2: Botón Repaso ────────────────────────────── -->
+    <!-- ── CLEAR ENTRY POINT 2: Botón Local ────────────────────────────── -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnRepaso"
         style="@style/AlgePlus.Button.Primary"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginTop="24dp"
-        android:text="@string/btn_repaso"
+        android:layout_width="@dimen/main_btn_width"
+        android:layout_height="@dimen/main_btn_height"
+        android:layout_marginStart="@dimen/main_btn_margin_start"
+        android:layout_marginEnd="@dimen/main_btn_margin_end"
+        android:layout_marginTop="@dimen/main_btn_margin_top"
+        android:text="@string/btn_local"
         android:textSize="@dimen/text_body"
         app:icon="@null"
         app:layout_constraintTop_toBottomOf="@id/divider"
@@ -120,16 +120,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:translationY="@dimen/main_y_translation" />
 
-    <!-- ── CLEAR ENTRY POINT 3: Botón Competencia (deshabilitado) ───────── -->
+    <!-- ── CLEAR ENTRY POINT 3: Botón Conexion (deshabilitado) ───────── -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnCompetencia"
         style="@style/AlgePlus.Button.Secondary"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginTop="14dp"
-        android:text="@string/btn_competencia"
+        android:layout_width="@dimen/main_btn_width"
+        android:layout_height="@dimen/main_btn_height"
+        android:layout_marginStart="@dimen/main_btn_margin_start"
+        android:layout_marginEnd="@dimen/main_btn_margin_end"
+        android:layout_marginTop="@dimen/main_btn_margin_top"
+        android:text="@string/btn_conexion"
         android:textSize="@dimen/text_caption"
         android:enabled="false"
         android:alpha="0.45"
