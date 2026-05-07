@@ -85,7 +85,7 @@ public class LeccionesAdapter extends ListAdapter<Leccion, LeccionesAdapter.Lecc
             tvNumero.setText(String.format("%02d", leccion.getId()));
             tvNombre.setText(leccion.getNombre());
             tvDescripcion.setText(leccion.getDescripcion()); // List Inlay
-            tvEtiqueta.setText(leccion.getEtiquetaDificultad());
+            //tvEtiqueta.setText(leccion.getEtiquetaDificultad());
 
             // Barra de progreso verde→rojo según dificultad
             int colorBar, progressValue;

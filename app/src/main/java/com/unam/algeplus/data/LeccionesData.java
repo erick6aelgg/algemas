@@ -30,6 +30,7 @@ public class LeccionesData {
 
     public static List<Leccion> getLecciones() {
         return Arrays.asList(
+                leccion0(),
                 leccion1(),
                 leccion2(),
                 leccion3(),
@@ -41,8 +42,18 @@ public class LeccionesData {
     //  LECCIÓN 1 – Suma y Resta Simples  (nivel 1)
     // ═══════════════════════════════════════════════════════════════════════
 
-    private static Leccion leccion1() {
+    private static Leccion leccion0() {
         return new Leccion(1,
+                "Prueba de ecuaciones",
+                "Despeja x usando sumas y restas de un solo paso.",
+                1,
+                Arrays.asList(
+                        ej1_1(), ej1_2()
+                ));
+    }
+
+    private static Leccion leccion1() {
+        return new Leccion(2,
                 "Suma y Resta Simples",
                 "Despeja x usando sumas y restas de un solo paso.",
                 1,
@@ -126,7 +137,7 @@ public class LeccionesData {
     // ═══════════════════════════════════════════════════════════════════════
 
     private static Leccion leccion2() {
-        return new Leccion(2,
+        return new Leccion(3,
                 "Multiplicación y División",
                 "Despeja x usando multiplicación o división.",
                 1,
@@ -210,7 +221,7 @@ public class LeccionesData {
     // ═══════════════════════════════════════════════════════════════════════
 
     private static Leccion leccion3() {
-        return new Leccion(3,
+        return new Leccion(4,
                 "Dos Pasos I",
                 "Primero despeja sumas/restas; luego multiplicaciones/divisiones.",
                 2,
@@ -304,7 +315,7 @@ public class LeccionesData {
     // ═══════════════════════════════════════════════════════════════════════
 
     private static Leccion leccion4() {
-        return new Leccion(4,
+        return new Leccion(5,
                 "Dos Pasos II",
                 "Practica más ecuaciones de dos pasos con distintos coeficientes.",
                 2,
