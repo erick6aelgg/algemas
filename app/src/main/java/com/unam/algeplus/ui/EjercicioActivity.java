@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.text.InputType;
 import android.view.DragEvent;
 import android.view.Gravity;
@@ -460,13 +461,15 @@ public class EjercicioActivity extends AppCompatActivity {
             }
         }
 
+
         if (correcto) {
+            vibrar(250);
             viewModel.registrarAcierto();
-            // Animar balanza si aplica
             animarBalanzaSiExiste();
             mostrarFelicitacion();
         } else {
             // Vibración leve de feedback
+            vibrar(75);
             btnVerificar.animate().translationX(10f).setDuration(80)
                     .withEndAction(() -> btnVerificar.animate().translationX(-10f).setDuration(80)
                             .withEndAction(() -> btnVerificar.animate().translationX(0f).setDuration(80).start())
@@ -479,6 +482,7 @@ public class EjercicioActivity extends AppCompatActivity {
     // ── Modal Panel: Pista ───────────────────────────────────────────────────
 
     private void mostrarPista() {
+        vibrar(75);
         viewModel.usarPista();
         Ejercicio ej = viewModel.getEjercicioActual();
         if (ej == null) return;
@@ -550,6 +554,7 @@ public class EjercicioActivity extends AppCompatActivity {
     // ── Navegación a resultados ──────────────────────────────────────────────
 
     private void irAResultados() {
+        vibrar(new long[]{0, 400, 100, 400, 100, 400} );
         Intent intent = new Intent(this, ResultadosActivity.class);
         intent.putExtra(ResultadosActivity.EXTRA_SCORE,
                 viewModel.getPuntajeFinal());
@@ -569,4 +574,21 @@ public class EjercicioActivity extends AppCompatActivity {
     private int dp(int value) {
         return (int) (value * getResources().getDisplayMetrics().density);
     }
+
+    // Vibración
+
+    private void vibrar(int milliseconds) {
+        Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+        if (vibrator != null && vibrator.hasVibrator()) {
+            vibrator.vibrate(milliseconds);
+        }
+    }
+
+    private void vibrar(long[] pattern) {
+        Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+        if (vibrator != null && vibrator.hasVibrator()) {
+            vibrator.vibrate(pattern, -1);
+        }
+    }
+
 }
