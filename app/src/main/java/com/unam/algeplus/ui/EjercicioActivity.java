@@ -3,6 +3,7 @@ package com.unam.algeplus.ui;
 import android.content.ClipData;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.text.InputType;
@@ -87,6 +88,7 @@ public class EjercicioActivity extends AppCompatActivity {
         if (username == null) username = "Usuario";
 
         bindViews();
+        exerciseContainer.setGravity(Gravity.CENTER_HORIZONTAL);
         setupViewModel(leccionId);
         setupTokenBoard();
         setupOverlayListeners();
@@ -99,6 +101,11 @@ public class EjercicioActivity extends AppCompatActivity {
         btnVerificar.setOnClickListener(v -> verificarRespuesta());
 
         // Pista
+        Drawable bulb = ContextCompat.getDrawable(this, R.drawable.ic_lightbulb);
+        int size = dp(20); // tamaño deseado en dp (por ejemplo 20dp)
+        bulb.setBounds(0, 0, size, size);
+        btnPista.setCompoundDrawables(bulb, null, null, null);
+        btnPista.setCompoundDrawablePadding(dp(8));
         btnPista.setOnClickListener(v -> mostrarPista());
 
         // Observar cambios de puntaje
@@ -183,6 +190,14 @@ public class EjercicioActivity extends AppCompatActivity {
                 params.setMargins(0, 0, 0, dp(8));
                 fila.setLayoutParams(params);
             }
+
+            LinearLayout.LayoutParams rowParams = new LinearLayout.LayoutParams(
+                    ViewGroup.LayoutParams.WRAP_CONTENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+            );
+            rowParams.gravity = Gravity.CENTER_HORIZONTAL;  // ← centra la fila horizontalmente
+            fila.setLayoutParams(rowParams);
+
             exerciseContainer.addView(fila);
         }
 
