@@ -24,9 +24,11 @@
 
     <!-- Semáforo de dificultad -->
     <color name="colorEasy">#4CAF50</color>
+    <color name="colorEasyBack">#72A075</color>
     <color name="colorMedium">#FF9800</color>
+    <color name="colorMediumBack">#FAC270</color>
     <color name="colorHard">#F44336</color>
-
+    <color name="colorHardBack">#F8A49E</color>
     <!-- Gamificación -->
     <color name="colorGold">#FFD700</color>
     <color name="colorSuccess">#4CAF50</color>
