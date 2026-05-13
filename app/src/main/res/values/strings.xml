@@ -18,10 +18,10 @@
 
     <!-- Ejercicio -->
     <string name="puntos_formato">%1$d pts</string>
-    <string name="btn_verificar">Verificar ✓</string>
+    <string name="btn_verificar">Verificar</string>
     <string name="btn_pista">Pista</string>
     <string name="btn_cerrar_tip">Entendido</string>
-    <string name="btn_avanzar">Siguiente →</string>
+    <string name="btn_avanzar">Siguiente</string>
     <string name="cero_puntos">0 pts</string>
     <string name="arrastrar">Arrastra:</string>
     <string name="pista">Pista</string>
@@ -41,7 +41,7 @@
     <string name="modo_repaso">Modo Repaso</string>
     <string name="titulo_resultados">¡Lección completada!</string>
     <string name="label_puntos_obtenidos">Puntos obtenidos</string>
-    <string name="btn_volver_lecciones">← Volver a lecciones</string>
+    <string name="btn_volver_lecciones">Volver a lecciones</string>
     <string name="btn_jugar_nuevo">Jugar de nuevo</string>
     <string name="completado">¡Completado!</string>
 

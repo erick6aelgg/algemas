@@ -19,6 +19,7 @@
     <!-- Texto -->
     <color name="colorOnPrimary">#FFFFFF</color>
     <color name="colorOnBackground">#1A1A1A</color>
+    <color name="colorText">#1A1A1A</color>
     <color name="colorTextSecondary">#3A3A3A</color>
     <color name="colorHint">#9E9CB5</color>
 
@@ -35,7 +36,7 @@
     <!-- Drag & Drop -->
     <color name="colorDropZone">#E0DBFF</color>
     <color name="colorDropZoneActive">#BBAAFF</color>
-    <color name="colorDropZoneFilled">#C5F0C5</color>
+    <color name="colorDropZoneFilled">#C8E6FF</color>
 
     <!-- Superposición / overlay -->
     <color name="colorOverlay">#99000000</color>

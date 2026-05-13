@@ -3,6 +3,7 @@ package com.unam.algeplus.ui;
 import android.content.ClipData;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.DragEvent;
@@ -22,6 +23,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.unam.algeplus.R;
@@ -74,16 +76,6 @@ public class EjercicioActivity extends AppCompatActivity {
     private final List<EditText> editTextsNumericos   = new ArrayList<>();
 
     private boolean primeraVez = true; // para mostrar el mensaje de +5 puntos al entrar
-
-    // ── Colores de diseño (paleta verde/azul) ────────────────────────────────
-    private static final String COLOR_PRIMARY     = "#2E8B2E";
-    private static final String COLOR_SURFACE      = "#D6EFD6";
-    private static final String COLOR_TEXT         = "#1A1A1A";
-    private static final String COLOR_HINT         = "#9E9CB5";
-    private static final String COLOR_SUCCESS      = "#4CAF50";
-    private static final String COLOR_DROP_IDLE    = "#C8E6FF";
-    private static final String COLOR_DROP_ACTIVE  = "#90CAF9";
-    private static final String COLOR_DROP_FILLED  = "#C5F0C5";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -184,7 +176,7 @@ public class EjercicioActivity extends AppCompatActivity {
             LinearLayout fila = crearFilaPaso(paso, paso.esEncabezado());
             if (i == 0) {
                 // Encabezado: fondo especial para destacar la ecuación
-                fila.setBackgroundColor(Color.parseColor(COLOR_SURFACE));
+                fila.setBackgroundColor(getResources().getColor(R.color.colorSurface));
                 LinearLayout.LayoutParams params =
                         new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                                 ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -231,8 +223,8 @@ public class EjercicioActivity extends AppCompatActivity {
                 TextView tv = new TextView(this);
                 tv.setText(token.getTexto());
                 tv.setTextSize(textSp);
-                tv.setTextColor(Color.parseColor(COLOR_TEXT));
-                if (esEncabezado) tv.setTextColor(Color.parseColor(COLOR_PRIMARY));
+                tv.setTextColor((getResources().getColor(R.color.colorTextSecondary)));
+                if (esEncabezado) tv.setTextColor((getResources().getColor(R.color.colorPrimary)));
                 return tv;
 
             case BLANCO_OP:
@@ -252,12 +244,27 @@ public class EjercicioActivity extends AppCompatActivity {
         LinearLayout dropZone = new LinearLayout(this);
         dropZone.setOrientation(LinearLayout.HORIZONTAL);
         dropZone.setGravity(Gravity.CENTER);
-        dropZone.setMinimumWidth(dp(52));
-        dropZone.setMinimumHeight(dp(44));
-        dropZone.setPadding(dp(8), dp(4), dp(8), dp(4));
+
+        // Obtener dimensiones desde recursos
+        int size = getResources().getDimensionPixelSize(R.dimen.drop_zone_size);
+        int padding = getResources().getDimensionPixelSize(R.dimen.drop_zone_padding);
+
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(size, size);
+        dropZone.setLayoutParams(params);
+
         aplicarFondoDropZone(dropZone, false);
 
         dropZoneExpected.put(dropZone, expected);
+
+        dropZone.post(() -> {
+            ViewGroup.LayoutParams lp = dropZone.getLayoutParams();
+            if (lp.width != size || lp.height != size) {
+                lp.width = size;
+                lp.height = size;
+                dropZone.setLayoutParams(lp);
+                dropZone.requestLayout();
+            }
+        });
 
         dropZone.setOnDragListener((v, event) -> {
             switch (event.getAction()) {
@@ -291,10 +298,9 @@ public class EjercicioActivity extends AppCompatActivity {
     }
 
     private void aplicarFondoDropZone(LinearLayout v, boolean activo) {
-        String color = activo ? COLOR_DROP_ACTIVE : COLOR_DROP_IDLE;
-        v.setBackgroundColor(Color.parseColor(color));
-        // Borde simulado con padding y color de contorno
-        v.setPadding(dp(2), dp(2), dp(2), dp(2));
+        int colorRes = activo ? R.color.colorDropZoneActive : R.color.colorDropZone;
+        int color = ContextCompat.getColor(this, colorRes);
+        v.setBackground(getCircleBackground(color));
     }
 
     private void actualizarDropZoneUI(LinearLayout dropZone, String operator, int textSp) {
@@ -302,9 +308,9 @@ public class EjercicioActivity extends AppCompatActivity {
         TextView tv = new TextView(this);
         tv.setText(operator);
         tv.setTextSize(textSp);
-        tv.setTextColor(Color.parseColor(COLOR_PRIMARY));
+        tv.setTextColor((getResources().getColor(R.color.colorText)));
         dropZone.addView(tv);
-        dropZone.setBackgroundColor(Color.parseColor(COLOR_DROP_FILLED));
+        dropZone.setBackground(getCircleBackground(getResources().getColor(R.color.colorDropZoneFilled)));
     }
 
     // ── EditText para números ────────────────────────────────────────────────
@@ -314,8 +320,8 @@ public class EjercicioActivity extends AppCompatActivity {
         et.setHint("?");
         et.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_SIGNED);
         et.setTextSize(textSp);
-        et.setTextColor(Color.parseColor(COLOR_TEXT));
-        et.setHintTextColor(Color.parseColor(COLOR_HINT));
+        et.setTextColor((getResources().getColor(R.color.colorText)));
+        et.setHintTextColor((getResources().getColor(R.color.colorHint)));
         et.setWidth(dp(72));
         et.setGravity(Gravity.CENTER);
         et.setTag(expected);  // respuesta esperada guardada como Tag
@@ -344,17 +350,17 @@ public class EjercicioActivity extends AppCompatActivity {
                 // Ejercicio completado: palomita
                 dot.setText("✓");
                 dot.setTextColor(Color.WHITE);
-                dot.setBackgroundColor(Color.parseColor(COLOR_SUCCESS));
+                dot.setBackgroundColor((getResources().getColor(R.color.colorSuccess)));
             } else if (i == actual) {
                 // Ejercicio actual: número resaltado
                 dot.setText(String.valueOf(i + 1));
                 dot.setTextColor(Color.WHITE);
-                dot.setBackgroundColor(Color.parseColor(COLOR_PRIMARY));
+                dot.setBackgroundColor((getResources().getColor(R.color.colorPrimary)));
             } else {
                 // Ejercicio pendiente: número tenue
                 dot.setText(String.valueOf(i + 1));
-                dot.setTextColor(Color.parseColor(COLOR_HINT));
-                dot.setBackgroundColor(Color.parseColor(COLOR_DROP_IDLE));
+                dot.setTextColor((getResources().getColor(R.color.colorHint)));
+                dot.setBackgroundColor((getResources().getColor(R.color.colorDropZone)));
             }
 
             progressDots.addView(dot);
@@ -366,16 +372,22 @@ public class EjercicioActivity extends AppCompatActivity {
     private void setupTokenBoard() {
         String[] operators = {"+", "−", "×", "÷"};
 
+        int tokenSize = getResources().getDimensionPixelSize(R.dimen.drop_zone_size);
+        int tokenColor = getResources().getColor(R.color.colorPrimary);
+
         for (String op : operators) {
             TextView token = new TextView(this);
             token.setText(op);
-            token.setTextSize(24f);
+            token.setTextSize(20f); // Un poco más grande para legibilidad
             token.setTextColor(Color.WHITE);
             token.setGravity(Gravity.CENTER);
-            token.setBackgroundColor(Color.parseColor(COLOR_PRIMARY));
 
-            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(dp(56), dp(56));
-            lp.setMargins(dp(6), 0, dp(6), 0);
+            // Aplicar fondo circular
+            token.setBackground(getCircleBackground(tokenColor));
+
+            // LayoutParams estrictamente cuadrados
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(tokenSize, tokenSize);
+            lp.setMargins(dp(8), 0, dp(8), 0);
             token.setLayoutParams(lp);
 
             token.setOnLongClickListener(v -> {
@@ -385,13 +397,12 @@ public class EjercicioActivity extends AppCompatActivity {
                 return true;
             });
 
-            // También aceptar tap corto (para accesibilidad)
             token.setOnClickListener(v -> {
-                // Rellenar el primer drop zone vacío disponible
                 for (Map.Entry<View, String> entry : dropZoneExpected.entrySet()) {
                     if (!dropZoneFilled.containsKey(entry.getKey())) {
-                        dropZoneFilled.put(entry.getKey(), op);
-                        actualizarDropZoneUI((LinearLayout) entry.getKey(), op, 22);
+                        String opText = ((TextView)v).getText().toString();
+                        dropZoneFilled.put(entry.getKey(), opText);
+                        actualizarDropZoneUI((LinearLayout) entry.getKey(), opText, 22);
                         break;
                     }
                 }
@@ -399,6 +410,13 @@ public class EjercicioActivity extends AppCompatActivity {
 
             tokenBoard.addView(token);
         }
+    }
+
+    private GradientDrawable getCircleBackground(int color) {
+        GradientDrawable drawable = new GradientDrawable();
+        drawable.setShape(GradientDrawable.OVAL);
+        drawable.setColor(color);
+        return drawable;
     }
 
     // ── Verificación de respuesta ────────────────────────────────────────────

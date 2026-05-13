@@ -118,6 +118,35 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
+        <!-- TOKEN BOARD: operadores arrastrables -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:background="@color/colorPrimarySurface"
+            android:paddingVertical="12dp"
+            android:paddingHorizontal="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/arrastrar"
+                android:textSize="@dimen/text_caption"
+                android:textColor="@color/colorOnPrimary"
+                android:layout_marginEnd="12dp" />
+
+            <!-- Los tokens se agregan programáticamente en EjercicioActivity -->
+            <LinearLayout
+                android:id="@+id/tokenBoard"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:gravity="center" />
+
+        </LinearLayout>
+
         <!-- SEQUENCE MAP: indicador de progreso con círculos -->
         <LinearLayout
             android:id="@+id/progressDots"
@@ -155,35 +184,6 @@
                 android:layout_weight="2"
                 android:text="@string/btn_verificar"
                 android:textSize="@dimen/text_body" />
-
-        </LinearLayout>
-
-        <!-- TOKEN BOARD: operadores arrastrables -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:background="@color/colorPrimarySurface"
-            android:paddingVertical="12dp"
-            android:paddingHorizontal="16dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/arrastrar"
-                android:textSize="@dimen/text_caption"
-                android:textColor="@color/colorOnPrimary"
-                android:layout_marginEnd="12dp" />
-
-            <!-- Los tokens se agregan programáticamente en EjercicioActivity -->
-            <LinearLayout
-                android:id="@+id/tokenBoard"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="horizontal"
-                android:gravity="center" />
 
         </LinearLayout>
 

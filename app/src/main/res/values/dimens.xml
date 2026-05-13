@@ -27,10 +27,15 @@
     <dimen name="text_equation">26sp</dimen>
 
     <!-- Token board -->
-    <dimen name="token_size">56dp</dimen>
+    <dimen name="token_size">52dp</dimen>
+    <dimen name="token_padding">8dp</dimen>>
     <dimen name="token_text">24sp</dimen>
+
     <dimen name="drop_zone_min_width">52dp</dimen>
     <dimen name="drop_zone_min_height">44dp</dimen>
+    <dimen name="drop_zone_size">40dp</dimen>
+    <dimen name="drop_zone_padding">15dp</dimen>
+    <dimen name="drop_zone_text_size">16sp</dimen>
 
     <!-- Progress dots -->
     <dimen name="dot_size">32dp</dimen>
