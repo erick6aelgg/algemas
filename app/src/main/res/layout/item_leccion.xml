@@ -90,26 +90,77 @@
             app:layout_constraintBottom_toBottomOf="parent" />
 
         <!-- Barra de progreso de dificultad (verde → rojo) -->
-        <ProgressBar
-            android:id="@+id/pbDificultad"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="0dp"
-            android:layout_height="6dp"
-            android:max="100"
-            android:progress="50"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="14dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/tvNumero"
-            app:layout_constraintEnd_toStartOf="@id/btnPlay" />
+<!--        <ProgressBar-->
+<!--            android:id="@+id/pbDificultad"-->
+<!--            style="?android:attr/progressBarStyleHorizontal"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="6dp"-->
+<!--            android:max="100"-->
+<!--            android:progress="50"-->
+<!--            android:layout_marginStart="12dp"-->
+<!--            android:layout_marginEnd="8dp"-->
+<!--            android:layout_marginBottom="14dp"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintStart_toEndOf="@id/tvNumero"-->
+<!--            app:layout_constraintEnd_toStartOf="@id/btnPlay" />-->
 
+
+<!--        <TextView-->
+<!--            android:id="@+id/tvEtiqueta"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textSize="@dimen/text_caption"-->
+<!--            android:textStyle="bold"-->
+<!--            android:paddingHorizontal="10dp"-->
+<!--            android:paddingVertical="4dp"-->
+<!--            android:layout_marginStart="12dp"-->
+<!--            android:layout_marginTop="6dp"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/tvDescripcion"-->
+<!--            app:layout_constraintStart_toEndOf="@id/tvNumero"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            android:layout_marginBottom="18dp" />-->
+
+        <LinearLayout
+            android:id="@+id/dotsContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="14dp"
+            app:layout_constraintTop_toBottomOf="@id/tvEtiqueta"
+            app:layout_constraintStart_toEndOf="@id/tvNumero"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <View
+                android:id="@+id/dot1"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/circle_dot" />
+
+            <View
+                android:id="@+id/dot2"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/circle_dot" />
+
+            <View
+                android:id="@+id/dot3"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:background="@drawable/circle_dot" />
+
+        </LinearLayout>
         <!-- Botón Play (CLEAR ENTRY POINT por lección) -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnPlay"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginEnd="16dp"
+            android:contentDescription="@string/btn_play"
             android:insetTop="0dp"
             android:insetBottom="0dp"
             app:icon="@drawable/ic_play"

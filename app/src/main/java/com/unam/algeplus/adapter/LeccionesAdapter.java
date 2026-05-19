@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import androidx.core.content.ContextCompat;
+import android.content.res.ColorStateList;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -67,8 +69,10 @@ public class LeccionesAdapter extends ListAdapter<Leccion, LeccionesAdapter.Lecc
         private final TextView tvNombre;
         private final TextView tvDescripcion;
         private final TextView tvEtiqueta;
-        private final ProgressBar pbDificultad;
+        //private final ProgressBar pbDificultad;
         private final Button btnPlay;
+
+        private final View dot1, dot2, dot3;
 
         LeccionViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -77,42 +81,56 @@ public class LeccionesAdapter extends ListAdapter<Leccion, LeccionesAdapter.Lecc
             tvNombre      = itemView.findViewById(R.id.tvNombre);
             tvDescripcion = itemView.findViewById(R.id.tvDescripcion);
             tvEtiqueta    = itemView.findViewById(R.id.tvEtiqueta);
-            pbDificultad  = itemView.findViewById(R.id.pbDificultad);
+            //pbDificultad  = itemView.findViewById(R.id.pbDificultad);
             btnPlay       = itemView.findViewById(R.id.btnPlay);
+            dot1 = itemView.findViewById(R.id.dot1);
+            dot2 = itemView.findViewById(R.id.dot2);
+            dot3 = itemView.findViewById(R.id.dot3);
         }
 
         void bind(Leccion leccion, OnLeccionClickListener listener) {
             tvNumero.setText(String.format("%02d", leccion.getId()));
             tvNombre.setText(leccion.getNombre());
-            tvDescripcion.setText(leccion.getDescripcion()); // List Inlay
-            //tvEtiqueta.setText(leccion.getEtiquetaDificultad());
+            tvDescripcion.setText(leccion.getDescripcion());
+            tvEtiqueta.setText(leccion.getEtiquetaDificultad());
 
-            // Barra de progreso verde→rojo según dificultad
-            int colorBar, progressValue;
             switch (leccion.getNivelDificultad()) {
                 case 1:
-                    colorBar      = Color.parseColor("#4CAF50");
-                    progressValue = 33;
+                    difficultyBar.setBackgroundColor(ContextCompat.getColor(itemView.getContext(), R.color.colorEasyBack));
+                    tvEtiqueta.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.colorEasy));
+                    setDots(
+                            ContextCompat.getColor(itemView.getContext(), R.color.colorEasy),
+                            ContextCompat.getColor(itemView.getContext(), R.color.colorEasyBack),
+                            false, false
+                    );
                     break;
                 case 2:
-                    colorBar      = Color.parseColor("#FF9800");
-                    progressValue = 66;
+                    difficultyBar.setBackgroundColor(ContextCompat.getColor(itemView.getContext(), R.color.colorMediumBack));
+                    tvEtiqueta.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.colorMedium));
+                    setDots(
+                            ContextCompat.getColor(itemView.getContext(), R.color.colorMedium),
+                            ContextCompat.getColor(itemView.getContext(), R.color.colorMediumBack),
+                            true, false
+                    );
                     break;
                 default:
-                    colorBar      = Color.parseColor("#F44336");
-                    progressValue = 100;
+                    difficultyBar.setBackgroundColor(ContextCompat.getColor(itemView.getContext(), R.color.colorHardBack));
+                    tvEtiqueta.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.colorHard));
+                    setDots(
+                            ContextCompat.getColor(itemView.getContext(), R.color.colorHard),
+                            ContextCompat.getColor(itemView.getContext(), R.color.colorHardBack),
+                            true, true
+                    );
                     break;
             }
-            difficultyBar.setBackgroundColor(colorBar);
-            pbDificultad.setProgress(progressValue);
-            // Cambiar color de la barra de progreso
-            pbDificultad.getProgressDrawable().setColorFilter(
-                    colorBar, android.graphics.PorterDuff.Mode.SRC_IN);
-
-            tvEtiqueta.setTextColor(colorBar);
 
             btnPlay.setOnClickListener(v -> listener.onLeccionClick(leccion));
             itemView.setOnClickListener(v -> listener.onLeccionClick(leccion));
+        }
+        private void setDots(int colorActivo , int colorInactivo, boolean dot2Active, boolean dot3Active) {
+            dot1.setBackgroundTintList(ColorStateList.valueOf(colorActivo));
+            dot2.setBackgroundTintList(ColorStateList.valueOf(dot2Active ? colorActivo : colorInactivo));
+            dot3.setBackgroundTintList(ColorStateList.valueOf(dot3Active ? colorActivo : colorInactivo));
         }
     }
 }
