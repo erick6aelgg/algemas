@@ -1,16 +1,13 @@
 package com.unam.algeplus.ui;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
 
@@ -19,7 +16,6 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.unam.algeplus.R;
 import com.unam.algeplus.viewmodel.MenuViewModel;
-import android.window.OnBackInvokedDispatcher; // solo API 33+
 /**
  * Pantalla "Menú Principal".
  *
