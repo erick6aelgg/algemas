@@ -64,9 +64,9 @@ public class EjercicioActivity extends AppCompatActivity {
     private ScrollView scrollExercise;
     private Button btnVerificar, btnPista;
     private View dimOverlay;
-    private CardView cardTip, cardFelicitacion;
+    private CardView cardTip, cardFelicitacion, cardConfirmarSalida;
     private TextView tvTipMsg, tvFelicitacionMsg, tvPuntosGanados;
-    private Button btnCerrarTip, btnAvanzar;
+    private Button btnCerrarTip, btnAvanzar, btnContinuarLeccion, btnSalirLeccion;
 
     // ── Estado ────────────────────────────────────────────────────────────────
     private EjercicioViewModel viewModel;
@@ -96,7 +96,7 @@ public class EjercicioActivity extends AppCompatActivity {
 
         // Escape Hatch
         ImageButton btnBack = findViewById(R.id.btnBack);
-        btnBack.setOnClickListener(v -> finish());
+        btnBack.setOnClickListener(v -> intentarSalir());
 
         // Prominent Done Button
         btnVerificar.setOnClickListener(v -> verificarRespuesta());
@@ -133,11 +133,14 @@ public class EjercicioActivity extends AppCompatActivity {
         dimOverlay        = findViewById(R.id.dimOverlay);
         cardTip           = findViewById(R.id.cardTip);
         cardFelicitacion  = findViewById(R.id.cardFelicitacion);
+        cardConfirmarSalida = findViewById(R.id.cardConfirmarSalida);
         tvTipMsg          = findViewById(R.id.tvTipMsg);
         tvFelicitacionMsg = findViewById(R.id.tvFelicitacionMsg);
         tvPuntosGanados   = findViewById(R.id.tvPuntosGanados);
         btnCerrarTip      = findViewById(R.id.btnCerrarTip);
         btnAvanzar        = findViewById(R.id.btnAvanzar);
+        btnContinuarLeccion = findViewById(R.id.btnContinuarLeccion);
+        btnSalirLeccion = findViewById(R.id.btnSalirLeccion);
 
         tvUsername.setText(username);
     }
@@ -147,14 +150,27 @@ public class EjercicioActivity extends AppCompatActivity {
     private void setupViewModel(int leccionId) {
         viewModel = new ViewModelProvider(this).get(EjercicioViewModel.class);
 
-        Leccion leccion = LeccionesData.getLecciones().stream()
-                .filter(l -> l.getId() == leccionId)
-                .findFirst()
-                .orElse(LeccionesData.getLecciones().get(0));
+        Leccion leccion = LeccionesData.getLecciones().get(0);
+        for (Leccion item : LeccionesData.getLecciones()) {
+            if (item.getId() == leccionId) {
+                leccion = item;
+                break;
+            }
+        }
 
-        viewModel.iniciarLeccion(leccion);
-        mostrarEjercicioActual(primeraVez);
-        primeraVez = false;
+        btnVerificar.setEnabled(false);
+        btnPista.setEnabled(false);
+
+        viewModel.getLeccionInicializada().observe(this, inicializada -> {
+            if (Boolean.TRUE.equals(inicializada)) {
+                btnVerificar.setEnabled(true);
+                btnPista.setEnabled(true);
+                mostrarEjercicioActual(primeraVez);
+                primeraVez = false;
+            }
+        });
+
+        viewModel.iniciarLeccion(username, leccion);
     }
 
     // ── Renderizado del ejercicio ────────────────────────────────────────────
@@ -205,7 +221,7 @@ public class EjercicioActivity extends AppCompatActivity {
         actualizarProgressDots();
 
         // Mensaje de bienvenida la primera vez
-        if (esInicio) {
+        if (esInicio && Boolean.TRUE.equals(viewModel.getMostrarBonoInicio().getValue())) {
             Toast.makeText(this,
                     getString(R.string.mensaje_inicio_leccion),
                     Toast.LENGTH_LONG).show();
@@ -508,7 +524,8 @@ public class EjercicioActivity extends AppCompatActivity {
         tvFelicitacionMsg.setText(indice + 1 < total
                 ? getString(R.string.felicitacion_ejercicio)
                 : getString(R.string.felicitacion_ultima));
-        tvPuntosGanados.setText(getString(R.string.puntos_ganados, 5));
+        tvPuntosGanados.setText(getString(R.string.puntos_ganados,
+                viewModel.getPuntosPorAciertoActual()));
 
         dimOverlay.setVisibility(View.VISIBLE);
         cardFelicitacion.setAlpha(0f);
@@ -548,7 +565,46 @@ public class EjercicioActivity extends AppCompatActivity {
     private void setupOverlayListeners() {
         btnCerrarTip.setOnClickListener(v -> cerrarPista());
         btnAvanzar.setOnClickListener(v -> avanzarEjercicio());
+        btnContinuarLeccion.setOnClickListener(v -> cerrarConfirmacionSalida());
+        btnSalirLeccion.setOnClickListener(v -> salirDescartandoProgreso());
         dimOverlay.setOnClickListener(v -> { /* bloquear clicks bajo el overlay */ });
+    }
+
+    private void intentarSalir() {
+        if (viewModel != null && viewModel.requiereConfirmarSalida()) {
+            mostrarConfirmacionSalida();
+        } else {
+            finish();
+        }
+    }
+
+    private void mostrarConfirmacionSalida() {
+        dimOverlay.setVisibility(View.VISIBLE);
+        cardConfirmarSalida.setAlpha(0f);
+        cardConfirmarSalida.setScaleX(0.85f);
+        cardConfirmarSalida.setScaleY(0.85f);
+        cardConfirmarSalida.setVisibility(View.VISIBLE);
+        cardConfirmarSalida.animate().alpha(1f).scaleX(1f).scaleY(1f)
+                .setInterpolator(new OvershootInterpolator())
+                .setDuration(260).start();
+    }
+
+    private void cerrarConfirmacionSalida() {
+        cardConfirmarSalida.animate().alpha(0f).scaleX(0.9f).scaleY(0.9f).setDuration(180)
+                .withEndAction(() -> {
+                    cardConfirmarSalida.setVisibility(View.GONE);
+                    dimOverlay.setVisibility(View.GONE);
+                }).start();
+    }
+
+    private void salirDescartandoProgreso() {
+        viewModel.descartarProgresoIncompleto();
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        intentarSalir();
     }
 
     // ── Navegación a resultados ──────────────────────────────────────────────

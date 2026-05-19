@@ -1,6 +1,7 @@
 package com.unam.algeplus.ui;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -9,12 +10,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.unam.algeplus.R;
 import com.unam.algeplus.viewmodel.MenuViewModel;
-
+import android.window.OnBackInvokedDispatcher; // solo API 33+
 /**
  * Pantalla "Menú Principal".
  *
@@ -34,7 +39,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+       super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
 
         viewModel = new ViewModelProvider(this).get(MenuViewModel.class);
@@ -74,5 +80,18 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra(EXTRA_USERNAME, username);
         intent.putExtra(EXTRA_MODO, modo);
         startActivity(intent);
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus) {
+            WindowInsetsControllerCompat controller =
+                    new WindowInsetsControllerCompat(getWindow(), getWindow().getDecorView());
+            controller.hide(WindowInsetsCompat.Type.systemBars());
+            controller.setSystemBarsBehavior(
+                    WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+            );
+        }
     }
 }

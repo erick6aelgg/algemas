@@ -10,12 +10,12 @@ public class Termino {
     public enum TipoTermino { VARIABLE, CONSTANTE }
     public enum LadoEcuacion { IZQUIERDO, DERECHO }
 
-    private double valor;
+    private float valor;
     private TipoTermino tipo;
     private int signo;          // +1 o -1
     private LadoEcuacion lado;
 
-    public Termino(double valor, TipoTermino tipo, int signo, LadoEcuacion lado) {
+    public Termino(float valor, TipoTermino tipo, int signo, LadoEcuacion lado) {
         this.valor = valor;
         this.tipo = tipo;
         this.signo = signo;
@@ -23,7 +23,7 @@ public class Termino {
     }
 
     public double getValor() { return valor; }
-    public void setValor(double valor) { this.valor = valor; }
+    public void setValor(float valor) { this.valor = valor; }
 
     public TipoTermino getTipo() { return tipo; }
     public int getSigno() { return signo; }

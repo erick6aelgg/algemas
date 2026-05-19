@@ -13,13 +13,21 @@ public class Leccion {
     private final int nivelDificultad;   // 1 = fácil, 2 = medio, 3 = difícil
     private final List<Ejercicio> ejercicios;
 
+    private final int ptsobtenidos;
+
     public Leccion(int id, String nombre, String descripcion,
                    int nivelDificultad, List<Ejercicio> ejercicios) {
+        this(id, nombre, descripcion, nivelDificultad, ejercicios, 0);
+    }
+
+    public Leccion(int id, String nombre, String descripcion,
+                   int nivelDificultad, List<Ejercicio> ejercicios, int ptsobtenidos) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.nivelDificultad = nivelDificultad;
         this.ejercicios = ejercicios;
+        this.ptsobtenidos = ptsobtenidos;
     }
 
     public int getId() { return id; }

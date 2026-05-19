@@ -2,31 +2,25 @@ package com.unam.algeplus.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.unam.algeplus.R;
 import com.unam.algeplus.adapter.LeccionesAdapter;
+import com.unam.algeplus.database.ProgresoLeccionRepository;
 import com.unam.algeplus.model.Leccion;
 import com.unam.algeplus.viewmodel.LeccionesViewModel;
 
-/**
- * Pantalla "Lista de Lecciones".
- *
- * Patrón Infinite List: RecyclerView con todas las lecciones disponibles.
- * Patrón List Inlay: cada ítem muestra una breve descripción de la lección.
- * Patrón Escape Hatch: toolbar con flecha de regreso al menú principal.
- */
 public class LeccionesActivity extends AppCompatActivity {
 
     public static final String EXTRA_LECCION_ID = "extra_leccion_id";
-    public static final String EXTRA_USERNAME    = "extra_username";
-    public static final String EXTRA_MODO        = "extra_modo";
+    public static final String EXTRA_USERNAME = "extra_username";
+    public static final String EXTRA_MODO = "extra_modo";
 
     private String username;
     private String modo;
@@ -37,31 +31,33 @@ public class LeccionesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_lecciones);
 
         username = getIntent().getStringExtra(MainActivity.EXTRA_USERNAME);
-        modo     = getIntent().getStringExtra(MainActivity.EXTRA_MODO);
-        if (username == null) username = "Usuario";
+        modo = getIntent().getStringExtra(MainActivity.EXTRA_MODO);
+        if (username == null || username.trim().isEmpty()) username = "Usuario";
         if (modo == null) modo = MainActivity.MODO_REPASO;
 
-        // ── Toolbar (Escape Hatch) ──────────────────────────────────────────
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setTitle(R.string.titulo_lecciones);
-        }
-
-        // ── Encabezado con usuario ──────────────────────────────────────────
+        ImageButton btnBack = findViewById(R.id.btnBack);
+        TextView tvUsername = findViewById(R.id.tvUsername);
+        TextView tvScore = findViewById(R.id.tvScore);
         TextView tvGreeting = findViewById(R.id.tvGreeting);
+
+        btnBack.setOnClickListener(v -> finish());
+        tvUsername.setText(username);
         tvGreeting.setText(getString(R.string.saludo_usuario, username));
 
-        // ── RecyclerView (Infinite List + List Inlay) ───────────────────────
         RecyclerView rvLecciones = findViewById(R.id.rvLecciones);
         rvLecciones.setLayoutManager(new LinearLayoutManager(this));
 
         LeccionesViewModel viewModel = new ViewModelProvider(this).get(LeccionesViewModel.class);
-        LeccionesAdapter adapter = new LeccionesAdapter(leccion -> abrirEjercicio(leccion));
+        LeccionesAdapter adapter = new LeccionesAdapter(this::abrirEjercicio);
         rvLecciones.setAdapter(adapter);
-
         viewModel.getLecciones().observe(this, adapter::submitList);
+
+        ProgresoLeccionRepository progresoRepository = new ProgresoLeccionRepository(getApplication());
+        progresoRepository.observarPuntajeTotal(username).observe(this, total -> {
+            int puntos = total == null ? 0 : total;
+            tvScore.setText(getString(R.string.puntos_formato, puntos));
+        });
+        progresoRepository.observarPorUsuario(username).observe(this, adapter::setProgreso);
     }
 
     private void abrirEjercicio(Leccion leccion) {
@@ -70,11 +66,5 @@ public class LeccionesActivity extends AppCompatActivity {
         intent.putExtra(EXTRA_USERNAME, username);
         intent.putExtra(EXTRA_MODO, modo);
         startActivity(intent);
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        finish();
-        return true;
     }
 }

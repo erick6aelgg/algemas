@@ -322,4 +322,64 @@
 
     </androidx.cardview.widget.CardView>
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardConfirmarSalida"
+        style="@style/AlgePlus.Card.Modal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="28dp"
+        android:visibility="gone"
+        android:alpha="0"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="28dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/titulo_salir_leccion"
+                android:textSize="@dimen/text_body"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:gravity="center"
+                android:layout_marginBottom="10dp" />
+
+            <TextView
+                android:id="@+id/tvConfirmarSalidaMsg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/mensaje_salir_leccion"
+                android:textSize="@dimen/text_body"
+                android:textColor="@color/colorOnBackground"
+                android:gravity="center"
+                android:lineSpacingMultiplier="1.3"
+                android:layout_marginBottom="22dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnContinuarLeccion"
+                style="@style/AlgePlus.Button.Primary"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="@string/btn_continuar_leccion" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSalirLeccion"
+                style="@style/AlgePlus.Button.Secondary"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/btn_salir_leccion" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
