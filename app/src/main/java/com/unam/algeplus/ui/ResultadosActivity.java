@@ -20,12 +20,15 @@ public class ResultadosActivity extends AppCompatActivity {
     public static final String EXTRA_LECCION_ID     = "extra_leccion_id";
     public static final String EXTRA_USERNAME       = "extra_username";
 
+    public static final String EXTRA_MAX_SCORE      = "extra_max_score";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resultados);
 
         int    score         = getIntent().getIntExtra(EXTRA_SCORE, 0);
+        int    maxScore      = getIntent().getIntExtra(EXTRA_MAX_SCORE, 1);
         String leccionNombre = getIntent().getStringExtra(EXTRA_LECCION_NOMBRE);
         int    leccionId     = getIntent().getIntExtra(EXTRA_LECCION_ID, 1);
         String username      = getIntent().getStringExtra(EXTRA_USERNAME);
@@ -46,7 +49,8 @@ public class ResultadosActivity extends AppCompatActivity {
 
         // ── Mensaje de calificación ──────────────────────────────────────────
         TextView tvMensaje = findViewById(R.id.tvMensaje);
-        tvMensaje.setText(mensajeSegunPuntaje(score));
+        int porcentaje = (int) ((score * 100.0) / maxScore);
+        tvMensaje.setText(mensajeSegunPorcentaje(porcentaje));
 
         // ── Botones ──────────────────────────────────────────────────────────
         Button btnVolverLecciones = findViewById(R.id.btnVolverLecciones);
@@ -72,10 +76,10 @@ public class ResultadosActivity extends AppCompatActivity {
         });
     }
 
-    private String mensajeSegunPuntaje(int score) {
-        if (score >= 30) return getString(R.string.resultado_excelente);
-        if (score >= 20) return getString(R.string.resultado_bien);
-        if (score >= 10) return getString(R.string.resultado_regular);
+    private String mensajeSegunPorcentaje(int porcentaje) {
+        if (porcentaje >= 100) return getString(R.string.resultado_excelente);
+        if (porcentaje >= 80) return getString(R.string.resultado_bien);
+        if (porcentaje >= 60) return getString(R.string.resultado_regular);
         return getString(R.string.resultado_practica);
     }
 }

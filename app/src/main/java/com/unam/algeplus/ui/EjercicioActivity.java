@@ -611,9 +611,14 @@ public class EjercicioActivity extends AppCompatActivity {
 
     private void irAResultados() {
         vibrar(new long[]{0, 400, 100, 400, 100, 400} );
+
+        int ejercicios = viewModel.getTotalEjercicios();
+        int maxScore = 5 +(5*ejercicios);
+
         Intent intent = new Intent(this, ResultadosActivity.class);
         intent.putExtra(ResultadosActivity.EXTRA_SCORE,
                 viewModel.getPuntajeFinal());
+        intent.putExtra(ResultadosActivity.EXTRA_MAX_SCORE, maxScore);
         intent.putExtra(ResultadosActivity.EXTRA_LECCION_NOMBRE,
                 viewModel.getLeccionActual().getNombre());
         intent.putExtra(ResultadosActivity.EXTRA_LECCION_ID,

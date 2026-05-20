@@ -55,7 +55,7 @@
     <!-- Mensajes de resultado según puntaje -->
     <string name="resultado_excelente">¡Excelente trabajo! \nEres un as del álgebra.</string>
     <string name="resultado_bien">¡Muy bien! \nSigue practicando.</string>
-    <string name="resultado_regular">Buen intento. \nRepasa los pasos y vuelve a intentarlo.</string>
+    <string name="resultado_regular">Buen intento. \nRepasa un poco y vuelve a intentarlo.</string>
     <string name="resultado_practica">¡La práctica hace al maestro! \nVuelve a intentarlo.</string>
 
     <!-- Accesibilidad -->
