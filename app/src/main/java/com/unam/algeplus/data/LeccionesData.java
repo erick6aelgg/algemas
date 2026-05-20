@@ -5,7 +5,9 @@ import com.unam.algeplus.model.Leccion;
 import com.unam.algeplus.model.Paso;
 import com.unam.algeplus.model.PasoToken;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -43,6 +45,7 @@ public class LeccionesData {
     // ═══════════════════════════════════════════════════════════════════════
 
     private static Leccion leccion0() {
+        /* No se hace aleatorio porque es el de prueba */
         return new Leccion(1,
                 "Prueba de ecuaciones",
                 "Despeja x usando sumas y restas de un solo paso.",
@@ -53,13 +56,16 @@ public class LeccionesData {
     }
 
     private static Leccion leccion1() {
+        List<Ejercicio> ejercicios = new ArrayList<>(Arrays.asList(
+                ej1_1(), ej1_2(), ej1_3(), ej1_4(), ej1_5()
+        ));
+        Collections.shuffle(ejercicios);
         return new Leccion(2,
                 "Suma y Resta Simples",
                 "Despeja x usando sumas y restas de un solo paso.",
                 1,
-                Arrays.asList(
-                        ej1_1(), ej1_2(), ej1_3(), ej1_4(), ej1_5()
-                ));
+                ejercicios
+                );
     }
 
     /** x + 5 = 12  →  x = 7  (BALANZA) */
@@ -137,13 +143,16 @@ public class LeccionesData {
     // ═══════════════════════════════════════════════════════════════════════
 
     private static Leccion leccion2() {
+        List<Ejercicio> ejercicios = new ArrayList<>(Arrays.asList(
+                ej2_1(), ej2_2(), ej2_3(), ej2_4(), ej2_5()
+        ));
+        Collections.shuffle(ejercicios);
         return new Leccion(3,
                 "Multiplicación y División",
                 "Despeja x usando multiplicación o división.",
                 1,
-                Arrays.asList(
-                        ej2_1(), ej2_2(), ej2_3(), ej2_4(), ej2_5()
-                ));
+                ejercicios
+        );
     }
 
     /** 3x = 15  →  x = 5  (BALANZA) */
@@ -221,13 +230,16 @@ public class LeccionesData {
     // ═══════════════════════════════════════════════════════════════════════
 
     private static Leccion leccion3() {
+        List<Ejercicio> ejercicios = new ArrayList<>(Arrays.asList(
+                ej3_1(), ej3_2(), ej3_3(), ej3_4(), ej3_5()
+        ));
+        Collections.shuffle(ejercicios);
         return new Leccion(4,
                 "Dos Pasos I",
                 "Primero despeja sumas/restas; luego multiplicaciones/divisiones.",
                 2,
-                Arrays.asList(
-                        ej3_1(), ej3_2(), ej3_3(), ej3_4(), ej3_5()
-                ));
+                ejercicios
+                );
     }
 
     /** 2x + 4 = 10  →  x = 3 */
@@ -315,13 +327,16 @@ public class LeccionesData {
     // ═══════════════════════════════════════════════════════════════════════
 
     private static Leccion leccion4() {
+        List<Ejercicio> ejercicios = new ArrayList<>(Arrays.asList(
+                ej4_1(), ej4_2(), ej4_3(), ej4_4(), ej4_5()
+        ));
+        Collections.shuffle(ejercicios);
         return new Leccion(5,
                 "Dos Pasos II",
                 "Practica más ecuaciones de dos pasos con distintos coeficientes.",
                 2,
-                Arrays.asList(
-                        ej4_1(), ej4_2(), ej4_3(), ej4_4(), ej4_5()
-                ));
+                ejercicios
+        );
     }
 
     /** 2x − 10 = 0  →  x = 5 */
