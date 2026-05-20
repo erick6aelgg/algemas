@@ -59,7 +59,7 @@ public class EjercicioActivity extends AppCompatActivity {
     public static final String EXTRA_USERNAME   = "extra_username";
 
     // ── Views ────────────────────────────────────────────────────────────────
-    private TextView tvUsername, tvScore;
+    private TextView tvUsername, tvScore, tvInstrucciones;
     private LinearLayout exerciseContainer, progressDots, tokenBoard;
     private ScrollView scrollExercise;
     private Button btnVerificar, btnPista;
@@ -124,6 +124,7 @@ public class EjercicioActivity extends AppCompatActivity {
     private void bindViews() {
         tvUsername        = findViewById(R.id.tvUsername);
         tvScore           = findViewById(R.id.tvScore);
+        tvInstrucciones   = findViewById(R.id.tvInstrucciones);
         exerciseContainer = findViewById(R.id.exerciseContainer);
         progressDots      = findViewById(R.id.progressDots);
         scrollExercise    = findViewById(R.id.scrollExercise);
@@ -184,6 +185,7 @@ public class EjercicioActivity extends AppCompatActivity {
         Ejercicio ej = viewModel.getEjercicioActual();
         if (ej == null) return;
 
+        tvInstrucciones.setText(getString(R.string.instrucciones));
         // Si es tipo BALANZA, mostrar la vista de balanza antes de los pasos
         if (ej.getTipo() == Ejercicio.Tipo.BALANZA) {
             BalanzaView balanza = new BalanzaView(this);
