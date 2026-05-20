@@ -188,9 +188,13 @@ public class EjercicioActivity extends AppCompatActivity {
         if (ej.getTipo() == Ejercicio.Tipo.BALANZA) {
             BalanzaView balanza = new BalanzaView(this);
             balanza.setEquation(ej.getLadoIzquierdo(), ej.getLadoDerecho());
+
+            int balanza_size = getResources().getDimensionPixelSize(R.dimen.balanza_size);
             LinearLayout.LayoutParams balanzaParams =
-                    new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, dp(200));
-            balanzaParams.setMargins(0, 0, 0, dp(12));
+                    new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, balanza_size);
+
+            int margen = getResources().getDimensionPixelSize(R.dimen.balanza_margin);
+            balanzaParams.setMargins(margen, margen, margen, margen);
             exerciseContainer.addView(balanza, balanzaParams);
         }
 

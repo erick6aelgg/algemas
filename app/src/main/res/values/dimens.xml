@@ -37,6 +37,10 @@
     <dimen name="drop_zone_padding">15dp</dimen>
     <dimen name="drop_zone_text_size">16sp</dimen>
 
+    <!-- Tamaño de la balanza -->
+    <dimen name = "balanza_size" >200dp</dimen>
+    <dimen name = "balanza_margin" >12dp</dimen>
+
     <!-- Progress dots -->
     <dimen name="dot_size">32dp</dimen>
 
