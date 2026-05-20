@@ -26,6 +26,7 @@
     <string name="cero_puntos">0 pts</string>
     <string name="arrastrar">Arrastra:</string>
     <string name="pista">Pista</string>
+    <string name="instrucciones">Completa los espacios restantes para resolver la ecuación</string>
 
     <!-- Mensajes de ejercicio -->
     <string name="mensaje_inicio_leccion">+5 puntos por la iniciativa de aprender</string>
