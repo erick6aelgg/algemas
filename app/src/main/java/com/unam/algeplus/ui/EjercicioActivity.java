@@ -523,6 +523,18 @@ public class EjercicioActivity extends AppCompatActivity {
     // ── Modal Panel: Felicitación ────────────────────────────────────────────
 
     private void mostrarFelicitacion() {
+
+        View viewFocus = this.getCurrentFocus();
+        if (viewFocus != null) {
+            android.view.inputmethod.InputMethodManager imm =
+                    (android.view.inputmethod.InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+            if (imm != null) {
+                // Usamos 0 en lugar de flags restrictivos para forzar el cierre inmediato
+                imm.hideSoftInputFromWindow(viewFocus.getWindowToken(), 0);
+            }
+            viewFocus.clearFocus();
+        }
+
         int indice = viewModel.getIndiceActual();
         int total  = viewModel.getTotalEjercicios();
         tvFelicitacionMsg.setText(indice + 1 < total
