@@ -2,7 +2,7 @@
 <resources>
     <!-- App -->
     <string name="app_name">Álge+</string>
-    <string name="version">v1.0.0</string>
+    <string name="version">v1.0.1</string>
 
     <!-- Menú Principal -->
     <string name="hint_username">Nombre de usuario</string>
