@@ -33,16 +33,30 @@ public class BalanzaView extends View {
     private final Paint textPaint    = new Paint(Paint.ANTI_ALIAS_FLAG);
     private final Paint chainPaint   = new Paint(Paint.ANTI_ALIAS_FLAG);
 
+    /**
+     * Constructor sin parámetros
+     */
     public BalanzaView(Context context) {
         super(context);
         init();
     }
 
+    /**
+     * Constructor para la inflación de la vista desde un archivo de diseño XML.
+     *
+     * @param context El contexto de la aplicación.
+     * @param attrs Conjunto de atributos XML asignados a la vista.
+     */
     public BalanzaView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
+    /**
+     * Método init.
+     * Configura los estilos predeterminados (colores, grosores y acabados)
+     * para cada uno de los objetos Paint utilizados en el dibujo geométrico.
+     */
     private void init() {
         beamPaint.setColor(Color.parseColor("#2E8B2E"));
         beamPaint.setStrokeWidth(14f);
@@ -71,6 +85,14 @@ public class BalanzaView extends View {
 
     // ── API pública ───────────────────────────────────────────────────────────
 
+    /**
+     * Método setEquation.
+     * Establece los valores algebraicos de la ecuación y reinicia la inclinación de la balanza.
+     * Fuerza el redibujado inmediato del componente.
+     *
+     * @param leftSide  Texto correspondiente al miembro izquierdo de la igualdad.
+     * @param rightSide Texto correspondiente al miembro derecho de la igualdad.
+     */
     public void setEquation(String leftSide, String rightSide) {
         this.leftText  = leftSide;
         this.rightText = rightSide;
@@ -78,7 +100,15 @@ public class BalanzaView extends View {
         invalidate();
     }
 
-    /** Anima la balanza al estado equilibrado (beam horizontal). */
+
+    /**
+     * Método animateToBalanced.
+     * Ejecuta animación que devuelve el eje central de la balanza a
+     * una posición horizontal.
+     *
+     * @param onComplete Callback opcional  que se invoca de manera
+     * asíncrona al finalizar por completo la animación. Puede ser null.
+     */
     public void animateToBalanced(Runnable onComplete) {
         ValueAnimator anim = ValueAnimator.ofFloat(tiltDegrees, 0f);
         anim.setDuration(700);
@@ -97,6 +127,13 @@ public class BalanzaView extends View {
 
     // ── Dibujo ────────────────────────────────────────────────────────────────
 
+    /**
+     * Método onDraw.
+     * Realiza el renderizado bidimensional de toda la estructura de la balanza (columna, base,
+     * eje giratorio, cadenas de soporte, platillos de carga y textos representativos).
+     *
+     * @param canvas Lienzo proporcionado por el sistema para dibujar la vista.
+     */
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
