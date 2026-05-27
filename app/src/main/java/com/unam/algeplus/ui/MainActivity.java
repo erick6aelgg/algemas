@@ -16,11 +16,17 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.unam.algeplus.R;
 import com.unam.algeplus.viewmodel.MenuViewModel;
+
 /**
- * Pantalla "Menú Principal".
+ * Clase MainActivity
+ * Representa la pantalla principal.
  *
+ * Implementa los siguientes patrones de diseño.
  * Patrón Clear Entry Points: tres puntos de entrada claros —
- *   (1) campo de nombre, (2) botón Repaso, (3) botón Competencia (deshabilitado).
+ *   (1) campo de nombre
+ *   (2) botón Repaso
+ *   (3) botón Competencia (deshabilitado).
+ *
  * Patrón Input Prompt: campo de texto con hint "Nombre de usuario".
  */
 public class MainActivity extends AppCompatActivity {
@@ -33,6 +39,13 @@ public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_MODO     = "extra_modo";
     public static final String MODO_REPASO    = "repaso";
 
+    /**
+     * Método onCreate.
+     * Inicializa la actividad principal, configura la interfaz de usuario,
+     * los listeners de texto y el menú base de selección.
+     *
+     * @param savedInstanceState Estado de la instancia previamente guardada.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
        super.onCreate(savedInstanceState);
@@ -68,6 +81,11 @@ public class MainActivity extends AppCompatActivity {
         // (En versiones futuras: mostraría un ProgressBar mientras conecta)
     }
 
+    /**
+     * Método iniciarModo.
+     * Navega a la actividad de lecciones e inyecta el modo de juego seleccionado y el nombre de usuario.
+     * @param modo modo de juego ("Practicar" o "Competencia")
+     */
     private void iniciarModo(String modo) {
         String username = etUsername.getText().toString().trim();
         if (username.isEmpty()) username = "Usuario";
@@ -78,6 +96,12 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * Método onWindowFocusChanged
+     * Oculta las barras de sistema cuando la aplicación tiene el foco (Modo Inmersivo).
+     *
+     * @param hasFocus Indica si la ventana actual ha ganado o perdido foco.
+     */
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);

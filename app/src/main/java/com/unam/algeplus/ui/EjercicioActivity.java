@@ -43,9 +43,10 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Pantalla "Muestra Ejercicio".
+ * Clase EjercicioActivity
+ * Representa a la pantalla "Muestra Ejercicio".
  *
- * Implementa:
+ * Implementa los siguientes patrones:
  *   – Patrón Sequence Map: barra de círculos de progreso.
  *   – Patrón Prominent Done Button: botón "Verificar ✓" destacado.
  *   – Patrón Escape Hatch: flecha ← en la barra superior.
@@ -79,6 +80,12 @@ public class EjercicioActivity extends AppCompatActivity {
 
     private boolean primeraVez = true; // para mostrar el mensaje de +5 puntos al entrar
 
+    /**
+     * Método onCreate.
+     * Inicializa la actividad, recupera los extras del Intent y configura las vistas y observadores.
+     *
+     * @param savedInstanceState Estado previamente guardado de la actividad, si existe.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -121,6 +128,10 @@ public class EjercicioActivity extends AppCompatActivity {
 
     // ── Binding de vistas ────────────────────────────────────────────────────
 
+    /**
+     * Método bindViews.
+     * Vincula las variables de la clase con lasvistas correspondientes del layoutXML.
+     */
     private void bindViews() {
         tvUsername        = findViewById(R.id.tvUsername);
         tvScore           = findViewById(R.id.tvScore);
@@ -148,6 +159,12 @@ public class EjercicioActivity extends AppCompatActivity {
 
     // ── ViewModel y primera carga ────────────────────────────────────────────
 
+    /**
+     * Método setupViewModel.
+     * Configura el ViewModel de la actividad y carga la lección solicitada.
+     *
+     * @param leccionId Identificador de la lección a inicializar.
+     */
     private void setupViewModel(int leccionId) {
         viewModel = new ViewModelProvider(this).get(EjercicioViewModel.class);
 
@@ -176,6 +193,12 @@ public class EjercicioActivity extends AppCompatActivity {
 
     // ── Renderizado del ejercicio ────────────────────────────────────────────
 
+    /**
+     * Método mostrarEjercicioActual.
+     * Limpia el contenedor de ejercicios y renderiza el ejercicio actual.
+     *
+     * @param esInicio Indica si es el primer ejercicio de la lección para mostrar mensajes iniciales.
+     */
     private void mostrarEjercicioActual(boolean esInicio) {
         exerciseContainer.removeAllViews();
         dropZoneExpected.clear();
@@ -234,6 +257,14 @@ public class EjercicioActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Método crearFilaPaso.
+     * Crea un contenedor horizontal (fila) que agrupa los tokens de un paso específico.
+     *
+     * @param paso El paso que contiene la lista de tokens a renderizar.
+     * @param esEncabezado Indica si la fila corresponde al encabezado del ejercicio.
+     * @return LinearLayout configurado con las vistas de los tokens.
+     */
     private LinearLayout crearFilaPaso(Paso paso, boolean esEncabezado) {
         LinearLayout fila = new LinearLayout(this);
         fila.setOrientation(LinearLayout.HORIZONTAL);
@@ -255,6 +286,15 @@ public class EjercicioActivity extends AppCompatActivity {
         return fila;
     }
 
+    /**
+     * Método crearVistaToken.
+     * Crea la vista individual correspondiente a un token (texto, zona de arrastre o campo numérico).
+     *
+     * @param token El token a renderizar.
+     * @param esEncabezado Indica si la vista pertenece a un encabezado.
+     * @param textSp Tamaño del texto en unidades SP.
+     * @return La vista configurada, o null si el tipo de token no es reconocido.
+     */
     private View crearVistaToken(PasoToken token, boolean esEncabezado, float textSp) {
         switch (token.getTipo()) {
             case TEXTO:
@@ -278,6 +318,14 @@ public class EjercicioActivity extends AppCompatActivity {
 
     // ── Drop Zone para operadores (Drag & Drop) ──────────────────────────────
 
+    /**
+     * Método crearDropZone.
+     * Genera un área interactiva para soltar un operador matemático mediante drag and drop.
+     *
+     * @param expected El operador esperado para esta zona.
+     * @param textSp Tamaño de texto en SP para mostrar el operador soltado.
+     * @return Un LinearLayout configurado como drop zone.
+     */
     private LinearLayout crearDropZone(String expected, int textSp) {
         LinearLayout dropZone = new LinearLayout(this);
         dropZone.setOrientation(LinearLayout.HORIZONTAL);
@@ -335,12 +383,27 @@ public class EjercicioActivity extends AppCompatActivity {
         return dropZone;
     }
 
+    /**
+     * Método aplicarFondoDropZone.
+     * Aplica un color de fondo dinámico a la zona de arrastre dependiendo de su estado.
+     *
+     * @param v La zona de arrastre (Drop Zone).
+     * @param activo True si se debe mostrar como activa, false en caso contrario.
+     */
     private void aplicarFondoDropZone(LinearLayout v, boolean activo) {
         int colorRes = activo ? R.color.colorDropZoneActive : R.color.colorDropZone;
         int color = ContextCompat.getColor(this, colorRes);
         v.setBackground(getCircleBackground(color));
     }
 
+    /**
+     * Metodo actualizarDropZoneUI
+     * Actualiza la interfaz visual de una zona de arrastre cuando recibe un operador.
+     *
+     * @param dropZone La vista receptora.
+     * @param operator El texto del operador insertado.
+     * @param textSp El tamaño del texto en SP.
+     */
     private void actualizarDropZoneUI(LinearLayout dropZone, String operator, int textSp) {
         dropZone.removeAllViews();
         TextView tv = new TextView(this);
@@ -353,6 +416,14 @@ public class EjercicioActivity extends AppCompatActivity {
 
     // ── EditText para números ────────────────────────────────────────────────
 
+    /**
+     * Método crearEditTextNum.
+     * Crea un campo de texto para que el usuario ingrese la respuesta numérica esperada.
+     *
+     * @param expected La respuesta correcta esperada.
+     * @param textSp Tamaño de la fuente en unidades SP.
+     * @return El EditText configurado para la entrada de números.
+     */
     private EditText crearEditTextNum(String expected, int textSp) {
         EditText et = new EditText(this);
         et.setHint("?");
@@ -370,6 +441,10 @@ public class EjercicioActivity extends AppCompatActivity {
 
     // ── Barra de progreso (Sequence Map) ────────────────────────────────────
 
+    /**
+     * Método actualizarProgressDots.
+     * Actualiza la barra superior de indicadores de progreso (Patrón Sequence Map).
+     */
     private void actualizarProgressDots() {
         progressDots.removeAllViews();
         int total   = viewModel.getTotalEjercicios();
@@ -407,6 +482,10 @@ public class EjercicioActivity extends AppCompatActivity {
 
     // ── Token Board (drag source) ────────────────────────────────────────────
 
+    /**
+     * Método setupTokenBoard.
+     * Configura el panel inferior de operadores matemáticos arrastrables.
+     */
     private void setupTokenBoard() {
         String[] operators = {"+", "−", "×", "÷"};
 
@@ -449,7 +528,13 @@ public class EjercicioActivity extends AppCompatActivity {
             tokenBoard.addView(token);
         }
     }
-
+    /**
+     * Método getCircleBackground.
+     * Crea un recurso de fondo circular con un color específico.
+     *
+     * @param color El color a aplicar al fondo.
+     * @return El Drawable del círculo generado.
+     */
     private GradientDrawable getCircleBackground(int color) {
         GradientDrawable drawable = new GradientDrawable();
         drawable.setShape(GradientDrawable.OVAL);
@@ -459,6 +544,13 @@ public class EjercicioActivity extends AppCompatActivity {
 
     // ── Verificación de respuesta ────────────────────────────────────────────
 
+    /**
+     * Método verificarRespuesta.
+     * Crea un recurso de fondo circular con un color específico.
+     *
+     * @param color El color a aplicar al fondo.
+     * @return El Drawable del círculo generado.
+     */
     private void verificarRespuesta() {
         boolean correcto = true;
 
@@ -503,6 +595,10 @@ public class EjercicioActivity extends AppCompatActivity {
 
     // ── Modal Panel: Pista ───────────────────────────────────────────────────
 
+    /**
+     * Método mostrarPista
+     * Despliega un panel modal que revela una sugerencia al usuario y reduce puntos en el ViewModel.
+     */
     private void mostrarPista() {
         vibrar(75);
         viewModel.usarPista();
@@ -514,6 +610,10 @@ public class EjercicioActivity extends AppCompatActivity {
         cardTip.animate().alpha(1f).scaleX(1f).scaleY(1f).setDuration(250).start();
     }
 
+    /**
+     * Método cerrarPista.
+     * Oculta el panel modal de la pista y restaura la visibilidad del ejercicio.
+     */
     private void cerrarPista() {
         cardTip.animate().alpha(0f).scaleX(0.9f).scaleY(0.9f).setDuration(200)
                 .withEndAction(() -> {
@@ -524,6 +624,10 @@ public class EjercicioActivity extends AppCompatActivity {
 
     // ── Modal Panel: Felicitación ────────────────────────────────────────────
 
+    /**
+     * Método mostrarFelicitación.
+     * Muestra el panel modal de éxito, oculta el teclado virtual y anuncia los puntos ganados.
+     */
     private void mostrarFelicitacion() {
 
         View viewFocus = this.getCurrentFocus();
@@ -555,6 +659,10 @@ public class EjercicioActivity extends AppCompatActivity {
                 .setDuration(300).start();
     }
 
+    /**
+     * Método avanzarEjercicio.
+     * Cierra el panel de felicitación y avanza la lógica hacia el siguiente ejercicio de la lección.
+     */
     private void avanzarEjercicio() {
         cardFelicitacion.setVisibility(View.GONE);
         dimOverlay.setVisibility(View.GONE);
@@ -567,6 +675,10 @@ public class EjercicioActivity extends AppCompatActivity {
 
     // ── Animación de balanza ─────────────────────────────────────────────────
 
+    /**
+     * Método animarBalanzaSiExiste
+     * Busca la vista de la balanza en el contenedor y ejecuta su animación de equilibrio si esta existe.
+     */
     private void animarBalanzaSiExiste() {
         // Busca el BalanzaView en el contenedor y lo anima a equilibrado
         for (int i = 0; i < exerciseContainer.getChildCount(); i++) {
@@ -580,6 +692,10 @@ public class EjercicioActivity extends AppCompatActivity {
 
     // ── Listeners de overlays ────────────────────────────────────────────────
 
+    /**
+     * Método setupOverlayListeneres.
+     * Configura los oyentes de eventos (listeners) para los botones dentro de los diferentes overlays modales.
+     */
     private void setupOverlayListeners() {
         btnCerrarTip.setOnClickListener(v -> cerrarPista());
         btnAvanzar.setOnClickListener(v -> avanzarEjercicio());
@@ -588,6 +704,10 @@ public class EjercicioActivity extends AppCompatActivity {
         dimOverlay.setOnClickListener(v -> { /* bloquear clicks bajo el overlay */ });
     }
 
+    /**
+     * Método intentarSalir.
+     * Evalúa el progreso actual para determinar si debe mostrarse un cuadro de diálogo de confirmación antes de salir.
+     */
     private void intentarSalir() {
         if (viewModel != null && viewModel.requiereConfirmarSalida()) {
             mostrarConfirmacionSalida();
@@ -596,6 +716,10 @@ public class EjercicioActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Método mostrarConfirmaciónSalida
+     * Muestra una alerta para prevenir la pérdida de progreso al salir prematuramente de un ejercicio.
+     */
     private void mostrarConfirmacionSalida() {
         dimOverlay.setVisibility(View.VISIBLE);
         cardConfirmarSalida.setAlpha(0f);
@@ -607,6 +731,10 @@ public class EjercicioActivity extends AppCompatActivity {
                 .setDuration(260).start();
     }
 
+    /**
+     * Método cerrarConfirmacionSalida.
+     * Oculta la alerta de confirmación de salida.
+     */
     private void cerrarConfirmacionSalida() {
         cardConfirmarSalida.animate().alpha(0f).scaleX(0.9f).scaleY(0.9f).setDuration(180)
                 .withEndAction(() -> {
@@ -615,11 +743,19 @@ public class EjercicioActivity extends AppCompatActivity {
                 }).start();
     }
 
+    /**
+     * Método salirDescartandoProgreso.
+     * Finaliza la actividad actual y borra el progreso incompleto.
+     */
     private void salirDescartandoProgreso() {
         viewModel.descartarProgresoIncompleto();
         finish();
     }
 
+    /**
+     * Método onBackPressed.
+     * Sobrescribe el comportamiento del botón físico de retroceso para solicitar confirmación si hay progreso en curso.
+     */
     @Override
     public void onBackPressed() {
         intentarSalir();
@@ -627,6 +763,10 @@ public class EjercicioActivity extends AppCompatActivity {
 
     // ── Navegación a resultados ──────────────────────────────────────────────
 
+    /**
+     * Método irAResultados
+     * Calcula la calificación máxima posible y navega hacia la pantalla de resultados enviando los puntajes mediante el Intent.
+     */
     private void irAResultados() {
         vibrar(new long[]{0, 400, 100, 400, 100, 400} );
 
@@ -650,12 +790,23 @@ public class EjercicioActivity extends AppCompatActivity {
 
     // ── Utilidad ─────────────────────────────────────────────────────────────
 
+    /**
+     * Convierte un valor dado en píxeles de densidad independiente (dp) a píxeles exactos (px).
+     *
+     * @param value El valor numérico en dp.
+     * @return El tamaño equivalente en píxeles.
+     */
     private int dp(int value) {
         return (int) (value * getResources().getDisplayMetrics().density);
     }
 
     // Vibración
 
+    /**
+     * Activa la vibración utilizando durante un determinado número de milisegundos.
+     *
+     * @param milliseconds tiempo en milisegundos que definen la la duración de la vibración.
+     */
     private void vibrar(int milliseconds) {
         Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
         if (vibrator != null && vibrator.hasVibrator()) {
@@ -663,6 +814,11 @@ public class EjercicioActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Activa la vibración utilizando un patrón específico de tiempos de encendido y apagado.
+     *
+     * @param pattern Arreglo de tiempos tipo long en milisegundos que definen la cadencia.
+     */
     private void vibrar(long[] pattern) {
         Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
         if (vibrator != null && vibrator.hasVibrator()) {

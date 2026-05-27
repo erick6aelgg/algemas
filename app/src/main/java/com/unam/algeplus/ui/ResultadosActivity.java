@@ -22,6 +22,13 @@ public class ResultadosActivity extends AppCompatActivity {
 
     public static final String EXTRA_MAX_SCORE      = "extra_max_score";
 
+    /**
+     * Método onCreate.
+     * Inicializa la vista de resultados extrayendo los datos de rendimiento de la actividad anterior
+     * y mapeándolos a la interfaz de usuario.
+     *
+     * @param savedInstanceState Estado de la instancia guardada.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +83,13 @@ public class ResultadosActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Método mensajeSegunPorcentaje.
+     * Genera una cadena de texto de retroalimentación cualitativa según el porcentaje de aciertos del usuario.
+     *
+     * @param porcentaje Porcentaje de puntos obtenidos respecto a la calificación máxima.
+     * @return El string descriptivo asociado al recurso de idiomas del proyecto.
+     */
     private String mensajeSegunPorcentaje(int porcentaje) {
         if (porcentaje >= 100) return getString(R.string.resultado_excelente);
         if (porcentaje >= 80) return getString(R.string.resultado_bien);
