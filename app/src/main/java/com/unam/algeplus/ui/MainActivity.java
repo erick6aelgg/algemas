@@ -22,12 +22,19 @@ import com.unam.algeplus.viewmodel.MenuViewModel;
  * Representa la pantalla principal.
  *
  * Implementa los siguientes patrones de diseño.
+ *
  * Patrón Clear Entry Points: tres puntos de entrada claros —
  *   (1) campo de nombre
  *   (2) botón Repaso
  *   (3) botón Competencia (deshabilitado).
  *
  * Patrón Input Prompt: campo de texto con hint "Nombre de usuario".
+ *
+ * @see LeccionesActivity
+ * @see MenuViewModel
+ *
+ * @author Movilísticos - ICAT, UNAM
+ * @version 1.0.1
  */
 public class MainActivity extends AppCompatActivity {
 

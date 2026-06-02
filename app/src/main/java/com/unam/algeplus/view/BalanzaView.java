@@ -17,6 +17,9 @@ import android.view.animation.OvershootInterpolator;
  * Vista personalizada que dibuja una balanza con dos platillos.
  * Se inclina al inicio para representar que la ecuación aún no está equilibrada.
  * Anima a la posición horizontal cuando el ejercicio se resuelve correctamente.
+ *
+ * @author Movilísticos - ICAT, UNAM
+ * @version 1.0.1
  */
 public class BalanzaView extends View {
 

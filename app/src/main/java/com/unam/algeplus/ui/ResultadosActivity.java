@@ -12,6 +12,9 @@ import com.unam.algeplus.R;
 /**
  * Pantalla "Resultados".
  * Muestra el resumen de la lección completada.
+ *
+ * @author Movilísticos - ICAT, UNAM
+ * @version 1.0.1
  */
 public class ResultadosActivity extends AppCompatActivity {
 

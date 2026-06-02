@@ -52,6 +52,9 @@ import java.util.Map;
  *   – Patrón Escape Hatch: flecha ← en la barra superior.
  *   – Patrón Modal Panel: overlays de felicitación y pista.
  *   – Drag & Drop: tokens de operadores arrastrables a drop zones.
+ *
+ * @author Movilísticos - ICAT, UNAM
+ * @version 1.0.1
  */
 public class EjercicioActivity extends AppCompatActivity {
 

@@ -20,6 +20,9 @@ import com.unam.algeplus.viewmodel.LeccionesViewModel;
  * Clase LeccionesActivity.
  * Actividad que despliega la lista de lecciones disponibles para el usuario.
  * Se encarga de mostrar el puntaje global e instanciar el RecyclerView correspondiente.
+ *
+ * @author Movilísticos - ICAT, UNAM
+ * @version 1.0.1
  */
 public class LeccionesActivity extends AppCompatActivity {
 
