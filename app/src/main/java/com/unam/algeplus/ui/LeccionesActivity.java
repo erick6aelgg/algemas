@@ -45,11 +45,13 @@ public class LeccionesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lecciones);
 
+        // ── Extras del Intent ────────────────────────────────────────────────
         username = getIntent().getStringExtra(MainActivity.EXTRA_USERNAME);
         modo = getIntent().getStringExtra(MainActivity.EXTRA_MODO);
         if (username == null || username.trim().isEmpty()) username = "Usuario";
         if (modo == null) modo = MainActivity.MODO_REPASO;
 
+        // ── Vistas de la barra superior ──────────────────────────────────────
         ImageButton btnBack = findViewById(R.id.btnBack);
         TextView tvUsername = findViewById(R.id.tvUsername);
         TextView tvScore = findViewById(R.id.tvScore);
@@ -59,14 +61,18 @@ public class LeccionesActivity extends AppCompatActivity {
         tvUsername.setText(username);
         tvGreeting.setText(getString(R.string.saludo_usuario, username));
 
+        // ── RecyclerView ─────────────────────────────────────────────────────
         RecyclerView rvLecciones = findViewById(R.id.rvLecciones);
         rvLecciones.setLayoutManager(new LinearLayoutManager(this));
 
         LeccionesViewModel viewModel = new ViewModelProvider(this).get(LeccionesViewModel.class);
         LeccionesAdapter adapter = new LeccionesAdapter(this::abrirEjercicio);
         rvLecciones.setAdapter(adapter);
+
+        // Observar lista de lecciones (datos estáticos)
         viewModel.getLecciones().observe(this, adapter::submitList);
 
+        // ── Progreso y puntaje (Room LiveData) ───────────────────────────────
         ProgresoLeccionRepository progresoRepository = new ProgresoLeccionRepository(getApplication());
         progresoRepository.observarPuntajeTotal(username).observe(this, total -> {
             int puntos = total == null ? 0 : total;
@@ -75,6 +81,9 @@ public class LeccionesActivity extends AppCompatActivity {
         progresoRepository.observarPorUsuario(username).observe(this, adapter::setProgreso);
     }
 
+    // ─────────────────────────────────────────────────────────────────────────
+    //  Navegación
+    // ─────────────────────────────────────────────────────────────────────────
     /**
      * Método abrirEjercicio.
      * Lanza la pantalla de ejercicios transfiriendo los parámetros necesarios de la lección seleccionada.

@@ -58,11 +58,15 @@ import java.util.Map;
  */
 public class EjercicioActivity extends AppCompatActivity {
 
-    // ── Extras de Intent ────────────────────────────────────────────────────
+    // ─────────────────────────────────────────────────────────────────────────
+    //  Constantes de Intent
+    // ─────────────────────────────────────────────────────────────────────────
     public static final String EXTRA_LECCION_ID = "extra_leccion_id";
     public static final String EXTRA_USERNAME   = "extra_username";
 
-    // ── Views ────────────────────────────────────────────────────────────────
+    // ─────────────────────────────────────────────────────────────────────────
+    //  Referencias a vistas
+    // ─────────────────────────────────────────────────────────────────────────
     private TextView tvUsername, tvScore, tvInstrucciones;
     private LinearLayout exerciseContainer, progressDots, tokenBoard;
     private ScrollView scrollExercise;
@@ -72,7 +76,9 @@ public class EjercicioActivity extends AppCompatActivity {
     private TextView tvTipMsg, tvFelicitacionMsg, tvPuntosGanados;
     private Button btnCerrarTip, btnAvanzar, btnContinuarLeccion, btnSalirLeccion;
 
-    // ── Estado ────────────────────────────────────────────────────────────────
+    // ─────────────────────────────────────────────────────────────────────────
+    //  Estado
+    // ─────────────────────────────────────────────────────────────────────────
     private EjercicioViewModel viewModel;
     private String username;
 
@@ -129,7 +135,9 @@ public class EjercicioActivity extends AppCompatActivity {
         });
     }
 
-    // ── Binding de vistas ────────────────────────────────────────────────────
+    // ─────────────────────────────────────────────────────────────────────────
+    //  Inicialización de vistas y ViewModel
+    // ─────────────────────────────────────────────────────────────────────────
 
     /**
      * Método bindViews.
@@ -160,7 +168,9 @@ public class EjercicioActivity extends AppCompatActivity {
         tvUsername.setText(username);
     }
 
-    // ── ViewModel y primera carga ────────────────────────────────────────────
+    // ─────────────────────────────────────────────────────────────────────────
+    //  ViewModel y primera carga
+    // ─────────────────────────────────────────────────────────────────────────
 
     /**
      * Método setupViewModel.
@@ -194,7 +204,9 @@ public class EjercicioActivity extends AppCompatActivity {
         viewModel.iniciarLeccion(username, leccion);
     }
 
-    // ── Renderizado del ejercicio ────────────────────────────────────────────
+    // ─────────────────────────────────────────────────────────────────────────
+    //  Renderizado del ejercicio
+    // ─────────────────────────────────────────────────────────────────────────
 
     /**
      * Método mostrarEjercicioActual.
@@ -319,7 +331,9 @@ public class EjercicioActivity extends AppCompatActivity {
         }
     }
 
-    // ── Drop Zone para operadores (Drag & Drop) ──────────────────────────────
+    // ─────────────────────────────────────────────────────────────────────────
+    //  Drop Zone — operadores (Drag & Drop)
+    // ─────────────────────────────────────────────────────────────────────────
 
     /**
      * Método crearDropZone.
@@ -417,7 +431,9 @@ public class EjercicioActivity extends AppCompatActivity {
         dropZone.setBackground(getCircleBackground(getResources().getColor(R.color.colorDropZoneFilled)));
     }
 
-    // ── EditText para números ────────────────────────────────────────────────
+    // ─────────────────────────────────────────────────────────────────────────
+    //  EditText numérico
+    // ─────────────────────────────────────────────────────────────────────────
 
     /**
      * Método crearEditTextNum.
@@ -442,7 +458,9 @@ public class EjercicioActivity extends AppCompatActivity {
         return et;
     }
 
-    // ── Barra de progreso (Sequence Map) ────────────────────────────────────
+    // ─────────────────────────────────────────────────────────────────────────
+    //  Barra de progreso (Sequence Map)
+    // ─────────────────────────────────────────────────────────────────────────
 
     /**
      * Método actualizarProgressDots.
@@ -483,7 +501,9 @@ public class EjercicioActivity extends AppCompatActivity {
         }
     }
 
-    // ── Token Board (drag source) ────────────────────────────────────────────
+    // ─────────────────────────────────────────────────────────────────────────
+    //  Tablero de tokens (drag source)
+    // ─────────────────────────────────────────────────────────────────────────
 
     /**
      * Método setupTokenBoard.
@@ -545,7 +565,9 @@ public class EjercicioActivity extends AppCompatActivity {
         return drawable;
     }
 
-    // ── Verificación de respuesta ────────────────────────────────────────────
+    // ─────────────────────────────────────────────────────────────────────────
+    //  Verificación de respuesta
+    // ─────────────────────────────────────────────────────────────────────────
 
     /**
      * Método verificarRespuesta.
@@ -596,7 +618,9 @@ public class EjercicioActivity extends AppCompatActivity {
         }
     }
 
-    // ── Modal Panel: Pista ───────────────────────────────────────────────────
+    // ─────────────────────────────────────────────────────────────────────────
+    //  Paneles modales
+    // ─────────────────────────────────────────────────────────────────────────
 
     /**
      * Método mostrarPista
@@ -625,7 +649,9 @@ public class EjercicioActivity extends AppCompatActivity {
                 }).start();
     }
 
-    // ── Modal Panel: Felicitación ────────────────────────────────────────────
+    // ─────────────────────────────────────────────────────────────────────────
+    //  Felicitacion
+    // ─────────────────────────────────────────────────────────────────────────
 
     /**
      * Método mostrarFelicitación.
@@ -676,7 +702,9 @@ public class EjercicioActivity extends AppCompatActivity {
         }
     }
 
-    // ── Animación de balanza ─────────────────────────────────────────────────
+    // ─────────────────────────────────────────────────────────────────────────
+    //  Animación de balanza
+    // ─────────────────────────────────────────────────────────────────────────
 
     /**
      * Método animarBalanzaSiExiste
@@ -693,7 +721,9 @@ public class EjercicioActivity extends AppCompatActivity {
         }
     }
 
-    // ── Listeners de overlays ────────────────────────────────────────────────
+    // ─────────────────────────────────────────────────────────────────────────
+    //  Listeners de overlays
+    // ─────────────────────────────────────────────────────────────────────────
 
     /**
      * Método setupOverlayListeneres.
@@ -764,7 +794,9 @@ public class EjercicioActivity extends AppCompatActivity {
         intentarSalir();
     }
 
-    // ── Navegación a resultados ──────────────────────────────────────────────
+    // ─────────────────────────────────────────────────────────────────────────
+    //  Navegación a resultados
+    // ─────────────────────────────────────────────────────────────────────────
 
     /**
      * Método irAResultados
@@ -791,7 +823,9 @@ public class EjercicioActivity extends AppCompatActivity {
         finish();
     }
 
-    // ── Utilidad ─────────────────────────────────────────────────────────────
+    // ─────────────────────────────────────────────────────────────────────────
+    //  Utilidades
+    // ─────────────────────────────────────────────────────────────────────────
 
     /**
      * Convierte un valor dado en píxeles de densidad independiente (dp) a píxeles exactos (px).

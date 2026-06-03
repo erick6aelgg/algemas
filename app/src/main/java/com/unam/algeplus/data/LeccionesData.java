@@ -11,6 +11,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
+ * Clase LeccionesData
  * Fuente de datos estática con las 4 lecciones y sus 20 ejercicios.
  *
  * Niveles de dificultad:
@@ -23,6 +24,9 @@ import java.util.List;
  *
  * Operadores que se arrastran:  "+", "−", "×", "÷"
  * Números que se teclean: cualquier entero con signo.
+ *
+ * @author Movilísticos - ICAT, UNAM
+ * @version 1.0.1
  */
 public class LeccionesData {
 
@@ -30,6 +34,13 @@ public class LeccionesData {
     //  PUNTO DE ENTRADA
     // ═══════════════════════════════════════════════════════════════════════
 
+
+    /**
+     * Método getLecciones.
+     * Devuelve la lista completa de lecciones disponibles en la aplicación.
+     *
+     * @return lista inmutable de Leccion; nunca null.
+     */
     public static List<Leccion> getLecciones() {
         return Arrays.asList(
                 leccion0(),
@@ -40,12 +51,22 @@ public class LeccionesData {
         );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    //  LECCIÓN 1 – Suma y Resta Simples  (nivel 1)
-    // ═══════════════════════════════════════════════════════════════════════
 
+    // ═════════════════════════════════════════════════════════════════════════
+    //  LECCIÓN 0 — Prueba de ecuaciones (nivel 1, fija)
+    // ═════════════════════════════════════════════════════════════════════════
+
+    /**
+     * Método leccion0.
+     * Lección de prueba con dos ejercicios fijos
+     * (sin orden aleatorio porque es de prueba).
+     *
+     * Diseñada para familiarice con la interfaz antes de las
+     * lecciones con mezcla aleatoria.
+     *
+     * @return Leccion de prueba con id = 1.
+     */
     private static Leccion leccion0() {
-        /* No se hace aleatorio porque es el de prueba */
         return new Leccion(1,
                 "Prueba de ecuaciones",
                 "Despeja x usando sumas y restas de un solo paso.",
@@ -55,6 +76,17 @@ public class LeccionesData {
                 ));
     }
 
+    // ═══════════════════════════════════════════════════════════════════════
+    //  LECCIÓN 1 – Suma y Resta Simples  (nivel 1)
+    // ═══════════════════════════════════════════════════════════════════════
+
+    /**
+     * Método leccion1.
+     * Lección de suma y resta simples con cinco ejercicios en
+     * orden aleatorio.
+     *
+     * @return Leccion con id = 2, nivel 1.
+     */
     private static Leccion leccion1() {
         List<Ejercicio> ejercicios = new ArrayList<>(Arrays.asList(
                 ej1_1(), ej1_2(), ej1_3(), ej1_4(), ej1_5()
@@ -142,6 +174,13 @@ public class LeccionesData {
     //  LECCIÓN 2 – Multiplicación y División Simples  (nivel 1)
     // ═══════════════════════════════════════════════════════════════════════
 
+    /**
+     * Método leccion2.
+     * Lección de multiplicación y división simples con cinco
+     * ejercicios aleatorios.
+     *
+     * @return Leccion con id = 3, nivel 1.
+     */
     private static Leccion leccion2() {
         List<Ejercicio> ejercicios = new ArrayList<>(Arrays.asList(
                 ej2_1(), ej2_2(), ej2_3(), ej2_4(), ej2_5()
@@ -229,6 +268,13 @@ public class LeccionesData {
     //  LECCIÓN 3 – Ecuaciones de Dos Pasos I  (nivel 2)
     // ═══════════════════════════════════════════════════════════════════════
 
+    /**
+     * Método leccion3.
+     * Lección de ecuaciones de dos pasos con cinco ejercicios
+     * aleatorios.
+     *
+     * @return Leccion con id = 4, nivel 2.
+     */
     private static Leccion leccion3() {
         List<Ejercicio> ejercicios = new ArrayList<>(Arrays.asList(
                 ej3_1(), ej3_2(), ej3_3(), ej3_4(), ej3_5()
@@ -326,6 +372,14 @@ public class LeccionesData {
     //  LECCIÓN 4 – Ecuaciones de Dos Pasos II  (nivel 2)
     // ═══════════════════════════════════════════════════════════════════════
 
+    /**
+     * Método leccion4.
+     * Lección de balanza algebraica con cinco ejercicios aleatorios.
+     *
+     * Todos los ejercicios son de tipo BALANZA.
+     *
+     * @return Leccion con id = 5, nivel 2.
+     */
     private static Leccion leccion4() {
         List<Ejercicio> ejercicios = new ArrayList<>(Arrays.asList(
                 ej4_1(), ej4_2(), ej4_3(), ej4_4(), ej4_5()
@@ -423,18 +477,51 @@ public class LeccionesData {
     //  HELPERS DE CONSTRUCCIÓN (reducen verbosidad)
     // ═══════════════════════════════════════════════════════════════════════
 
+    /**
+     * Método Paso.
+     * Crea un Paso con los tokens indicados.
+     *
+     * Método auxiliar de conveniencia para reducir la verbosidad al definir
+     * los datos en los métodos de ejercicios.
+     *
+     * @param esHeader true si el paso es el encabezado de solo lectura.
+     * @param tokens tokens que forman la fila del paso.
+     * @return nuevo Paso con la lista de tokens.
+     */
     private static Paso paso(boolean esHeader, PasoToken... tokens) {
         return new Paso(Arrays.asList(tokens), esHeader);
     }
 
+    /**
+     * Método t.
+     * Crea un PasoToken de texto estático.
+     *
+     * @param texto texto a mostrar; no debe ser null.
+     * @return token de tipo PasoToken.
+     */
     private static PasoToken t(String texto) {
         return PasoToken.texto(texto);
     }
 
+
+    /**
+     * Método op.
+     * Crea un PasoToken de hueco para arrastrar un operador.
+     *
+     * @param expected operador correcto esperado ("+", "−", "×", "÷").
+     * @return token de tipo PasoToken.
+     */
     private static PasoToken op(String expected) {
         return PasoToken.blancoOp(expected);
     }
 
+    /**
+     * Método num.
+     * Crea un PasoToken de hueco numérico editable.
+     *
+     * @param expected número correcto esperado como cadena.
+     * @return token de tipo PasoToken.
+     */
     private static PasoToken num(String expected) {
         return PasoToken.blancoNum(expected);
     }

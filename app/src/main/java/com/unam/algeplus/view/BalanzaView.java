@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.animation.OvershootInterpolator;
 
 /**
+ * Clase BalanzaView
  * Vista personalizada que dibuja una balanza con dos platillos.
  * Se inclina al inicio para representar que la ecuación aún no está equilibrada.
  * Anima a la posición horizontal cuando el ejercicio se resuelve correctamente.
@@ -23,21 +24,62 @@ import android.view.animation.OvershootInterpolator;
  */
 public class BalanzaView extends View {
 
+    // ─────────────────────────────────────────────────────────────────────────
+    //  Estado de la animación
+    // ─────────────────────────────────────────────────────────────────────────
+
+    /** Ángulo de inclinación de la barra en grados. */
     private float tiltDegrees = -10f;
 
-    private String leftText  = "x";
-    private String rightText = "?";
-
-    // Paints
-    private final Paint beamPaint    = new Paint(Paint.ANTI_ALIAS_FLAG);
-    private final Paint panFillPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-    private final Paint panBorderPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-    private final Paint fulcrumPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-    private final Paint textPaint    = new Paint(Paint.ANTI_ALIAS_FLAG);
-    private final Paint chainPaint   = new Paint(Paint.ANTI_ALIAS_FLAG);
+    // ─────────────────────────────────────────────────────────────────────────
+    //  Contenido textual de los platillos
+    // ─────────────────────────────────────────────────────────────────────────
 
     /**
-     * Constructor sin parámetros
+     * Texto mostrado en el platillo izquierdo.
+     * Corresponde al lado izquierdo de la ecuación, p. ej. "x + 5".
+     */
+    private String leftText = "x";
+
+    /**
+     * Texto mostrado en el platillo derecho.
+     * Corresponde al lado derecho de la ecuación, p. ej. "12".
+     */
+    private String rightText = "?";
+
+
+
+    // ─────────────────────────────────────────────────────────────────────────
+    //  Pinceles de dibujo
+    // ─────────────────────────────────────────────────────────────────────────
+
+    /** Pincel de la barra horizontal */
+    private final Paint beamPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+
+    /** Pincel de relleno de los platillos */
+    private final Paint panFillPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+
+    /** Pincel del borde de los platillos.*/
+    private final Paint panBorderPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+
+    /** Pincel del pivote triangular y la columna. */
+    private final Paint fulcrumPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+
+    /** Pincel para el texto de los platillos.*/
+    private final Paint textPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+
+    /** Pincel de las cadenas que unen la barra a los platillos. */
+    private final Paint chainPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+
+
+    // ─────────────────────────────────────────────────────────────────────────
+    //  Constructores
+    // ─────────────────────────────────────────────────────────────────────────
+
+    /**
+     * Constructor sin parametros.
+     *
+     * @param context contexto Android; no debe ser null.
      */
     public BalanzaView(Context context) {
         super(context);
@@ -86,7 +128,9 @@ public class BalanzaView extends View {
         chainPaint.setStrokeCap(Paint.Cap.ROUND);
     }
 
-    // ── API pública ───────────────────────────────────────────────────────────
+    // ─────────────────────────────────────────────────────────────────────────
+    //  API pública
+    // ─────────────────────────────────────────────────────────────────────────
 
     /**
      * Método setEquation.
@@ -128,7 +172,9 @@ public class BalanzaView extends View {
         anim.start();
     }
 
-    // ── Dibujo ────────────────────────────────────────────────────────────────
+    // ─────────────────────────────────────────────────────────────────────────
+    //  Dibujo
+    // ─────────────────────────────────────────────────────────────────────────
 
     /**
      * Método onDraw.
@@ -158,11 +204,11 @@ public class BalanzaView extends View {
         RectF base = new RectF(cx - 50, h * 0.85f, cx + 50, h * 0.93f);
         canvas.drawRoundRect(base, 14, 14, fulcrumPaint);
 
-        // ── Beam y contenido en canvas rotado ────────────────────────────────
+        // ── Barra y contenido en canvas rotado ────────────────────────────────
         canvas.save();
         canvas.rotate(tiltDegrees, cx, pivotY);
 
-        // Beam
+        // Barra horizontal
         canvas.drawLine(cx - beamLen, pivotY, cx + beamLen, pivotY, beamPaint);
 
         // Cadenas
@@ -189,7 +235,7 @@ public class BalanzaView extends View {
 
         canvas.restore();
 
-        // ── Triángulo / pivote (dibujado encima del beam) ────────────────────
+        // ── Triángulo / pivote  ────────────────────
         Path tri = new Path();
         tri.moveTo(cx,      pivotY - 10);
         tri.lineTo(cx - 22, pivotY + 22);
